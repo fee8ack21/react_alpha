@@ -1,0 +1,17 @@
+@charset 'utf-8';
+// custom style
+$primary: #272727;
+//
+@import "~bootstrap/scss/bootstrap";
+@import "./login.scss";
+// global style
+input,
+button,
+textarea,
+body {
+  letter-spacing: 0.2rem;
+}
+body {
+  min-height: 100vh;
+  background-color: gainsboro;
+}
