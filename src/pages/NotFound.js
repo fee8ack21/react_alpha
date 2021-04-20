@@ -3,9 +3,9 @@ import Header from "components/Header";
 
 const NotFound = () => (
   <>
-    <Header nickname="用戶" />;
-    <div>
-      <h2>Not Found</h2>
+    <Header nickname="User" />
+    <div className="not-found-wrap d-flex justify-content-center align-items-center">
+      <p className="display-3 font-weight-bold">Not Found</p>
     </div>
   </>
 );

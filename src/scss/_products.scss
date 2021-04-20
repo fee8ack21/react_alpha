@@ -1,0 +1,31 @@
+.products {
+  .product-fade-enter {
+    opacity: 0;
+  }
+  .product-fade-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+  }
+  .product-fade-exit {
+    opacity: 1;
+  }
+  .product-fade-exit-active {
+    opacity: 0;
+    transition: opacity 200ms;
+  }
+  .product-btn {
+    &.disabled:hover {
+      background-color: $info !important;
+    }
+    i {
+      transform: translateX(1.5px);
+    }
+  }
+  .panel-add-btn {
+    top: 200px;
+    right: 0px;
+    i {
+      transform: translateX(1.5px);
+    }
+  }
+}

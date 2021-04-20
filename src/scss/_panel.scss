@@ -1,0 +1,38 @@
+.panel-wrap {
+  z-index: -1;
+  transition: 0.3s;
+  position: fixed;
+  .over-layer {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    transition: 0.3s;
+  }
+  .panel {
+    position: fixed;
+    width: 380px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 999;
+    margin-right: -380px;
+    transition: 0.3s;
+    .panel-head {
+      .close-icon {
+        cursor: pointer;
+      }
+    }
+  }
+  &.active {
+    z-index: 9999;
+    .over-layer {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    .panel {
+      margin-right: 0px;
+    }
+  }
+}

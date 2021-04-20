@@ -8,7 +8,7 @@ function Home() {
 
   return (
     <>
-      <Header nickname="用戶" />
+      <Header nickname="User" />
       <Products />
     </>
   );

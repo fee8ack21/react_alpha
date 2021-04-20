@@ -1,5 +1,6 @@
 import React from "react";
-// import ReactDOM from "react-dom";s
+import { Link } from "react-router-dom";
+// import ReactDOM from "react-dom";
 // 類別寫法
 class Header extends React.Component {
   renderLink() {
@@ -7,19 +8,19 @@ class Header extends React.Component {
     if (nickname) {
       return (
         <span className="text-white">
-          <i class="far fa-user mr-2"></i>
+          <i className="far fa-user mr-2"></i>
           {this.props.nickname}
         </span>
       );
     } else {
       return (
         <>
-          <a href="/login" className="text-decoration-none text-white mr-4">
-            登入
-          </a>
-          <a href="/register" className="text-decoration-none text-white">
-            註冊
-          </a>
+          <Link to="/login" className="text-decoration-none text-white mr-4">
+            Login
+          </Link>
+          <Link to="/register" className="text-decoration-none text-white">
+            Register
+          </Link>
         </>
       );
     }
@@ -30,9 +31,9 @@ class Header extends React.Component {
         <div className="container">
           <div className="d-flex">
             <div>
-              <a href="/" className="text-decoration-none text-white">
-                首頁
-              </a>
+              <Link to="/" className="text-decoration-none text-white">
+                Home
+              </Link>
             </div>
             <div className="ml-auto">{this.renderLink()}</div>
           </div>

@@ -1,0 +1,36 @@
+.product {
+  & > div {
+    height: 100%;
+  }
+  figure {
+    .no-stock-layer {
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      background-color: rgba(255, 255, 255, 0.8);
+      overflow: hidden;
+      span {
+        font-size: 28px;
+        transform: rotate(-45deg);
+        white-space: nowrap;
+      }
+    }
+    img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  .product-info {
+    height: 88px;
+    overflow: hidden;
+  }
+  .product-icon {
+    button {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}

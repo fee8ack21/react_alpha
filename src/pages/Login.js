@@ -4,10 +4,10 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 // 類別寫法
 class Login extends React.Component {
-  constructor() {
-    super();
-    // this.handleClick = this.handleClick.bind(this);
-  }
+  // constructor() {
+  //   super();
+  //   this.handleClick = this.handleClick.bind(this);
+  // }
   //
   emailRef = React.createRef();
   passwordRef = React.createRef();
@@ -39,24 +39,24 @@ class Login extends React.Component {
   render() {
     return (
       <div className="login-wrap d-flex justify-content-center align-items-center">
-        <Form className="border rounded px-4 py-5" onSubmit={this.handleSubmit}>
+        <Form className="bg-white border rounded px-4 py-5" onSubmit={this.handleSubmit}>
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>信箱</Form.Label>
+            <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
               name="email"
-              placeholder="請輸入信箱"
+              placeholder=""
               ref={this.emailRef}
               value={this.state.email}
               onChange={this.handleChange}
             />
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
-            <Form.Label>密碼</Form.Label>
+            <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
               name="password"
-              placeholder="請輸入密碼"
+              placeholder=""
               ref={this.passwordRef}
               value={this.state.password}
               onChange={this.handleChange}
@@ -70,7 +70,7 @@ class Login extends React.Component {
             onClick={this.handleClick.bind(this, "clicked")}
             // onClick={(e) => this.handleClick("click", e)}
           >
-            送出
+            Send
           </Button>
         </Form>
       </div>

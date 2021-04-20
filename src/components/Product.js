@@ -1,46 +1,60 @@
 import React from "react";
 import { formatPrice } from "common/helper";
 class Product extends React.Component {
+  state = {
+    imgState: false,
+  };
+  //
+  leaveChangeImg = () => {
+    this.setState({ imgState: false });
+  };
+  enterChangeImg = () => {
+    this.setState({ imgState: true });
+  };
+
   render() {
-    const { name, image, tags, price, available } = this.props.product;
+    const { name, image1, image2, tags, price, status } = this.props.product;
 
     return (
-      <div className="product col-3 mb-3">
+      <div className="product col-6 col-md-4 col-xl-3 mb-3">
         <div className="bg-white rounded p-3">
           <div>
             <figure className="position-relative rounded">
-              <div
-                class="position-absolute"
-                style={{
-                  top: "0px",
-                  left: "0px",
-                  right: "0px",
-                  bottom: "0px",
-                  backgroundColor: "rgba(0,0,0,0.7)",
-                }}
-              >
-                {available ? "" : "Out of Stock"}
-              </div>
-              <img className="img-fluid" src={image} alt="" />
+              {status === "available" ? (
+                ""
+              ) : (
+                <div className="no-stock-layer position-absolute d-flex justify-content-center align-items-center">
+                  <span className="text-danger font-weight-bold font-italic">
+                    OuT oF sToCk
+                  </span>
+                </div>
+              )}
+              <img
+                className="rounded"
+                src={this.state.imgState ? image2 : image1}
+                alt=""
+                onMouseEnter={this.enterChangeImg}
+                onMouseLeave={this.leaveChangeImg}
+              />
             </figure>
-            <small>{this.props.tags}</small>
+          </div>
+          <div className="product-info">
+            <small className="text-secondary font-italic">{tags}</small>
             <p>{name}</p>
           </div>
-          <div className="d-flex justify-content-between align-items-center">
-            <p className="mb-1">{formatPrice(price)}</p>
+          <div className="product-icon d-flex justify-content-between align-items-center">
+            <p className="mb-0">{formatPrice(price)}</p>
             <button
-              className="position-relative btn bg-secondary rounded-circle"
-              style={{ width: "32px", height: "32px" }}
+              className={`product-btn btn d-flex justify-content-center align-items-center bg-info rounded-circle ${
+                status === "available" ? "" : "disabled"
+              }`}
+              disabled={status === "available" ? "" : "disabled"}
             >
-              <i
-                class="fas fa-shopping-cart position-absolute"
-                style={{
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%,-50%)",
-                }}
-              ></i>
-              {/* <i class="fas fa-exclamation"></i> */}
+              {status === "available" ? (
+                <i className="fas fa-shopping-cart"></i>
+              ) : (
+                <i className="fas fa-exclamation"></i>
+              )}
             </button>
           </div>
         </div>
