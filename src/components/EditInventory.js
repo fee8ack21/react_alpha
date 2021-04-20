@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "common/axios";
 import { toast } from "react-toastify";
-class AddInventory extends React.Component {
+class EditInventory extends React.Component {
   state = {
     name: "",
     price: "",
@@ -12,9 +12,7 @@ class AddInventory extends React.Component {
   };
   //
   showToast = () => {
-    toast.dark("Add Successfully !", {
-      autoClose: true,
-    });
+    toast("Add Successfully !");
   };
   //
   handleChange = (e) => {
@@ -36,12 +34,12 @@ class AddInventory extends React.Component {
   //
   render() {
     return (
-      <div className="add-inventory-wrap">
+      <div className="edit-inventory-wrap">
         <form action="" onSubmit={this.submit}>
           <div className="form-group">
-            <label htmlFor="add-name">Name：</label>
+            <label htmlFor="edit-name">Name：</label>
             <textarea
-              id="add-name"
+              id="edit-name"
               className="form-control"
               name="name"
               cols="30"
@@ -51,9 +49,9 @@ class AddInventory extends React.Component {
             ></textarea>
           </div>
           <div className="form-group">
-            <label htmlFor="add-price">Price：</label>
+            <label htmlFor="edit-price">Price：</label>
             <input
-              id="add-price"
+              id="edit-price"
               className="form-control"
               name="price"
               type="text"
@@ -62,9 +60,9 @@ class AddInventory extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="add-image1">Image1：</label>
+            <label htmlFor="edit-image1">Image1：</label>
             <input
-              id="add-image1"
+              id="edit-image1"
               className="form-control"
               name="image1"
               type=""
@@ -73,9 +71,9 @@ class AddInventory extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="add-image2">Image2：</label>
+            <label htmlFor="edit-image2">Image2：</label>
             <input
-              id="add-image2"
+              id="edit-image2"
               className="form-control"
               name="image2"
               type=""
@@ -84,9 +82,9 @@ class AddInventory extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="add-tags">Tags：</label>
+            <label htmlFor="edit-tags">Tags：</label>
             <input
-              id="add-tags"
+              id="edit-tags"
               className="form-control"
               name="tags"
               type="text"
@@ -95,9 +93,9 @@ class AddInventory extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="add-available">Status：</label>
+            <label htmlFor="edit-available">Status：</label>
             <select
-              id="add-available"
+              id="edit-available"
               className="form-control"
               name="status"
               value={this.state.status}
@@ -127,4 +125,4 @@ class AddInventory extends React.Component {
   }
 }
 
-export default AddInventory;
+export default EditInventory;

@@ -37,7 +37,7 @@ class Panel extends React.Component {
       <div className={_class[this.state.panelState]}>
         <div className="over-layer" onClick={this.closePanel}></div>
         <div className="panel bg-white">
-          <div className="panel-head d-flex justify-content-end px-3 pt-3 pb-5">
+          <div className="panel-head d-flex justify-content-end px-3 py-3">
             <span
               className="close-icon font-weight-bold h5"
               onClick={this.closePanel}

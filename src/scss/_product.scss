@@ -23,14 +23,24 @@
       object-position: center;
     }
   }
+  .edit-btn {
+    width: 32px;
+    height: 32px;
+    top: 10px;
+    right: 10px;
+    i {
+      transform: translateX(1.5px);
+    }
+  }
   .product-info {
     height: 88px;
     overflow: hidden;
   }
-  .product-icon {
-    button {
-      width: 32px;
-      height: 32px;
+  .add-to-cart-btn {
+    width: 32px;
+    height: 32px;
+    i {
+      transform: translateX(1.5px);
     }
   }
 }

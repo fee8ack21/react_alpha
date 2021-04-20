@@ -1,8 +1,18 @@
 import React from "react";
 import { formatPrice } from "common/helper";
+import Panel from "components/Panel";
+import EditInventory from "./EditInventory";
 class Product extends React.Component {
   state = {
     imgState: false,
+  };
+  toEdit = () => {
+    Panel.openPanel({
+      component: EditInventory,
+      callback: (data) => {
+        console.log(data);
+      },
+    });
   };
   //
   leaveChangeImg = () => {
@@ -18,7 +28,7 @@ class Product extends React.Component {
     return (
       <div className="product col-6 col-md-4 col-xl-3 mb-3">
         <div className="bg-white rounded p-3">
-          <div>
+          <div className="position-relative">
             <figure className="position-relative rounded">
               {status === "available" ? (
                 ""
@@ -37,15 +47,21 @@ class Product extends React.Component {
                 onMouseLeave={this.leaveChangeImg}
               />
             </figure>
+            <button
+              className="edit-btn btn btn-light d-flex justify-content-center align-items-center position-absolute rounded-circle"
+              onClick={this.toEdit}
+            >
+              <i class="fas fa-list"></i>
+            </button>
           </div>
           <div className="product-info">
             <small className="text-secondary font-italic">{tags}</small>
             <p>{name}</p>
           </div>
-          <div className="product-icon d-flex justify-content-between align-items-center">
+          <div className="d-flex justify-content-between align-items-center">
             <p className="mb-0">{formatPrice(price)}</p>
             <button
-              className={`product-btn btn d-flex justify-content-center align-items-center bg-info rounded-circle ${
+              className={`add-to-cart-btn btn d-flex justify-content-center align-items-center bg-info rounded-circle ${
                 status === "available" ? "" : "disabled"
               }`}
               disabled={status === "available" ? "" : "disabled"}
