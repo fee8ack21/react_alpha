@@ -12,7 +12,7 @@ class AddInventory extends React.Component {
   };
   //
   showToast = () => {
-    toast.dark("Add Successfully !", {
+    toast.dark("Your submission has been saved !", {
       autoClose: true,
     });
   };
@@ -117,9 +117,7 @@ class AddInventory extends React.Component {
             >
               Cancel
             </button>
-            <button className="btn btn-primary" type="submit">
-              Submit
-            </button>
+            <button className="btn btn-primary">Submit</button>
           </div>
         </form>
       </div>

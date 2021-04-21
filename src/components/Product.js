@@ -1,5 +1,7 @@
 import React from "react";
+import axios from "common/axios";
 import { formatPrice } from "common/helper";
+import { toast } from "react-toastify";
 import Panel from "components/Panel";
 import EditInventory from "./EditInventory";
 class Product extends React.Component {
@@ -9,10 +11,47 @@ class Product extends React.Component {
   toEdit = () => {
     Panel.openPanel({
       component: EditInventory,
+      props: {
+        product: this.props.product,
+        delete: this.props.delete,
+      },
       callback: (data) => {
         console.log(data);
+        if (data) {
+          this.props.update(data);
+        }
       },
     });
+  };
+  //
+  addToCart = async () => {
+    try {
+      const { id, name, image1, price } = this.props.product;
+      const res = await axios.get(`/carts?productId=${id}`);
+      const carts = res.data;
+      console.log(carts);
+      if (carts && carts.length > 0) {
+        const cart = carts[0];
+        cart.mount += 1;
+        await axios.put(`/carts/${cart.id}`, cart);
+      } else {
+        const cart = {
+          productId: id,
+          name,
+          image: image1,
+          price,
+          mount: 1,
+        };
+        await axios.post("/carts", cart).then((res) => {
+          console.log(res.data);
+        });
+      }
+      //
+      toast.dark("Add Cart Success !");
+      this.props.updateCartNum();
+    } catch (error) {
+      toast.error("Add Cart Failed !");
+    }
   };
   //
   leaveChangeImg = () => {
@@ -51,7 +90,7 @@ class Product extends React.Component {
               className="edit-btn btn btn-light d-flex justify-content-center align-items-center position-absolute rounded-circle"
               onClick={this.toEdit}
             >
-              <i class="fas fa-list"></i>
+              <i className="fas fa-list"></i>
             </button>
           </div>
           <div className="product-info">
@@ -65,6 +104,7 @@ class Product extends React.Component {
                 status === "available" ? "" : "disabled"
               }`}
               disabled={status === "available" ? "" : "disabled"}
+              onClick={this.addToCart}
             >
               {status === "available" ? (
                 <i className="fas fa-shopping-cart"></i>

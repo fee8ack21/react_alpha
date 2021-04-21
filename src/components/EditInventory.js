@@ -3,6 +3,7 @@ import axios from "common/axios";
 import { toast } from "react-toastify";
 class EditInventory extends React.Component {
   state = {
+    id: "",
     name: "",
     price: "",
     tags: "",
@@ -11,8 +12,32 @@ class EditInventory extends React.Component {
     status: "available",
   };
   //
+  componentDidMount() {
+    const {
+      id,
+      name,
+      image1,
+      image2,
+      tags,
+      price,
+      status,
+    } = this.props.product;
+    //
+    this.setState({
+      id,
+      name,
+      image1,
+      image2,
+      tags,
+      price,
+      status,
+    });
+  }
+  //
   showToast = () => {
-    toast("Add Successfully !");
+    toast.dark("Your submission has been saved !", {
+      autoClose: true,
+    });
   };
   //
   handleChange = (e) => {
@@ -26,8 +51,18 @@ class EditInventory extends React.Component {
   submit = (e) => {
     e.preventDefault();
     const product = { ...this.state };
-    axios.post("products", product).then((res) => {
+    axios.put(`products/${this.state.id}`, product).then((res) => {
       this.props.close(res.data);
+      this.showToast();
+    });
+  };
+  //
+  onDelete = (e) => {
+    e.preventDefault();
+    const product = { ...this.state };
+    axios.delete(`products/${this.state.id}`, product).then((res) => {
+      this.props.delete(this.state.id);
+      this.props.close();
       this.showToast();
     });
   };
@@ -115,8 +150,15 @@ class EditInventory extends React.Component {
             >
               Cancel
             </button>
+            <button
+              className="btn btn-danger"
+              type="button"
+              onClick={this.onDelete}
+            >
+              Delete
+            </button>
             <button className="btn btn-primary" type="submit">
-              Submit
+              Update
             </button>
           </div>
         </form>

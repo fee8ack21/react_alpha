@@ -18,7 +18,6 @@ class ProductToolBox extends React.Component {
     this.props.search("");
   };
   //
-
   render() {
     return (
       <div className="product-tool-box py-3 border-bottom border-primary">
@@ -47,7 +46,7 @@ class ProductToolBox extends React.Component {
             <a href="#!" className="position-relative">
               <i className="fas fa-shopping-cart h4"></i>
               <span className="badge badge-pill badge-danger position-absolute text-center">
-                0
+                {this.props.cartNum}
               </span>
             </a>
           </div>
