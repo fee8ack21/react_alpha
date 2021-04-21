@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 class ProductToolBox extends React.Component {
   state = {
     searchText: "",
@@ -16,6 +17,10 @@ class ProductToolBox extends React.Component {
       searchText: "",
     });
     this.props.search("");
+  };
+  //
+  goCart = () => {
+    this.props.history.push("/cart");
   };
   //
   render() {
@@ -43,8 +48,8 @@ class ProductToolBox extends React.Component {
             </div>
           </div>
           <div className="cart-icon-wrap">
-            <a href="#!" className="position-relative">
-              <i className="fas fa-shopping-cart h4"></i>
+            <a href="#!" className="position-relative" onClick={this.goCart}>
+              <i className="fas fa-shopping-cart"></i>
               <span className="badge badge-pill badge-danger position-absolute text-center">
                 {this.props.cartNum}
               </span>
@@ -55,4 +60,4 @@ class ProductToolBox extends React.Component {
     );
   }
 }
-export default ProductToolBox;
+export default withRouter(ProductToolBox);

@@ -42,5 +42,8 @@
     i {
       transform: translateX(1.5px);
     }
+    &.disabled:hover {
+      background-color: $info !important;
+    }
   }
 }
