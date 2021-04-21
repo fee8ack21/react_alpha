@@ -89,7 +89,8 @@ class EditInventory extends React.Component {
               id="edit-price"
               className="form-control"
               name="price"
-              type="text"
+              type="number"
+              min={1}
               value={this.state.price}
               onChange={this.handleChange}
             />
