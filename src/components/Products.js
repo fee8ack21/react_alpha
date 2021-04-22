@@ -114,9 +114,24 @@ class Products extends React.Component {
   };
   //
   initCartNum = async () => {
-    const res = await axios.get("/carts");
+    const user = global.auth.getUser() || {};
+    const res = await axios.get(`/carts`, { params: { userId: user.email } });
     const carts = res.data || [];
     return carts.map((cart) => cart.mount).reduce((a, value) => a + value, 0);
+  };
+  //
+  renderAddBtn = () => {
+    const user = global.auth.getUser() || {};
+    if (user.type === 1) {
+      return (
+        <button
+          className="panel-add-btn btn btn-warning position-fixed text-center font-weight-bold rounded-0"
+          onClick={this.openPanelAdd}
+        >
+          <i className="fas fa-plus"></i>
+        </button>
+      );
+    }
   };
   render() {
     return (
@@ -146,12 +161,7 @@ class Products extends React.Component {
                 : ""}
             </TransitionGroup>
           </div>
-          <button
-            className="panel-add-btn btn btn-warning position-fixed text-center font-weight-bold rounded-0"
-            onClick={this.openPanelAdd}
-          >
-            <i className="fas fa-plus"></i>
-          </button>
+          {this.renderAddBtn()}
         </div>
       </>
     );

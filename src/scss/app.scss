@@ -5,6 +5,7 @@ $primary: #272727;
 @import "~bootstrap/scss/bootstrap";
 //
 @import "./_loginPage.scss";
+@import "./_registerPage.scss";
 @import "./_notFoundPage.scss";
 @import "./_cartPage.scss";
 @import "./_productToolBox.scss";
@@ -13,6 +14,7 @@ $primary: #272727;
 @import "./_panel.scss";
 @import "./_addInventory.scss";
 @import "./_editInventory.scss";
+@import "./_userProfile.scss";
 // global style
 input,
 button,

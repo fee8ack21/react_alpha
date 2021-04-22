@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import { toast } from "react-toastify";
 class ProductToolBox extends React.Component {
   state = {
     searchText: "",
@@ -20,6 +21,11 @@ class ProductToolBox extends React.Component {
   };
   //
   goCart = () => {
+    if (!global.auth.isLogin()) {
+      this.props.history.push("/login");
+      toast.dark("Please login first !");
+      return;
+    }
     this.props.history.push("/cart");
   };
   //

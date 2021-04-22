@@ -1,15 +1,37 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import UserProfile from "components/UserProfile";
+import Panel from "components/Panel";
 // import ReactDOM from "react-dom";
 // 類別寫法
 class Header extends React.Component {
+  toProfile() {
+    Panel.openPanel({
+      component: UserProfile,
+      props: {
+        user: this.props.user,
+      },
+      callback: (data) => {
+        console.log(data);
+        if (data === "logout") {
+          this.props.history.go(0);
+        }
+      },
+    });
+  }
   renderLink() {
-    const nickname = this.props.nickname;
-    if (nickname) {
+    const user = this.props.user;
+    if (JSON.stringify(user) !== "{}") {
       return (
-        <span className="text-white">
+        <span
+          className="text-white"
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            this.toProfile();
+          }}
+        >
           <i className="far fa-user mr-2"></i>
-          {this.props.nickname}
+          {user.nickname}
         </span>
       );
     } else {
@@ -68,4 +90,4 @@ class Header extends React.Component {
 //   );
 // }
 
-export default Header;
+export default withRouter(Header);

@@ -1,10 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "common/axios";
-import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-// 類別寫法
-export default function Login(props) {
+import { toast } from "react-toastify";
+export default function Register(props) {
   //
   const {
     register,
@@ -15,13 +14,18 @@ export default function Login(props) {
   const onSubmit = async (data) => {
     //
     try {
-      const { email, password } = data;
-      const res = await axios.post("/auth/login", { email, password });
+      const { nickname, email, password } = data;
+      const res = await axios.post("/auth/register", {
+        nickname,
+        email,
+        password,
+        type: 0,
+      });
       const jwToken = res.data;
       global.auth.setToken(jwToken);
       //
       localStorage.setItem("store_token_id", jwToken);
-      toast.dark("Login successfully !");
+      toast.dark("Register successfully !");
       props.history.push("/");
     } catch (error) {
       const message = error.response.data;
@@ -29,15 +33,42 @@ export default function Login(props) {
     }
   };
   return (
-    <div className="login-wrap d-flex justify-content-center align-items-center">
+    <div className="register-wrap d-flex justify-content-center align-items-center">
       <form
         className="bg-white border rounded px-4 py-5"
         onSubmit={handleSubmit(onSubmit)}
       >
+        <div className="form-group">
+          <label htmlFor="" className="position-relative">
+            Nickname
+            <i
+              className="far fa-user position-absolute text-secondary"
+              style={{ fontSize: "20px", left: "10px", bottom: "-38px" }}
+            ></i>
+          </label>
+          <input
+            type="text"
+            name="nickname"
+            autoComplete="chrome-off"
+            className={`form-control ${errors.nickname && "is-invalid"}`}
+            style={{ paddingLeft: "40px" }}
+            {...register("nickname", {
+              required: true,
+            })}
+          />
+          {!!errors.nickname && errors.nickname.type === "required" ? (
+            <small className="text-danger">Nickname is required !</small>
+          ) : (
+            ""
+          )}
+        </div>
         <div className="form-group position-relative">
           <label htmlFor="" className="position-relative">
             Email
-            <i className="far fa-envelope position-absolute text-secondary"></i>
+            <i
+              className="far fa-envelope position-absolute text-secondary"
+              style={{ fontSize: "20px", left: "10px", bottom: "-38px" }}
+            ></i>
           </label>
           <input
             type="text"
@@ -45,6 +76,7 @@ export default function Login(props) {
             placeholder=""
             autoComplete="chrome-off"
             className={`form-control ${errors.email && "is-invalid"}`}
+            style={{ paddingLeft: "40px" }}
             {...register("email", {
               required: true,
               pattern: /^\w+(\[\+\.-\]?\w)*@\w+(\[\.-\]?\w+)*\.[a-z]+$/i,
@@ -64,7 +96,10 @@ export default function Login(props) {
         <div className="form-group position-relative">
           <label htmlFor="" className="position-relative">
             Password
-            <i className="fas fa-lock position-absolute text-secondary"></i>
+            <i
+              className="fas fa-lock position-absolute text-secondary"
+              style={{ fontSize: "20px", left: "10px", bottom: "-38px" }}
+            ></i>
           </label>
 
           <input
@@ -73,6 +108,7 @@ export default function Login(props) {
             placeholder=""
             autoComplete="chrome-off"
             className={`form-control ${errors.password && "is-invalid"}`}
+            style={{ paddingLeft: "40px" }}
             {...register("password", { required: true, minLength: 3 })}
           />
           {!!errors.password && errors.password.type === "required" ? (
@@ -89,11 +125,11 @@ export default function Login(props) {
           )}
         </div>
         <div className="btn-wrap d-flex justify-content-between">
-          <Link to="/register" className="btn btn-secondary">
-            Register
+          <Link to="/login" className="btn btn-secondary">
+            Login
           </Link>
           <button className="btn btn-primary" type="submit">
-            Login
+            Register
           </button>
         </div>
         <Link to="/" className="d-block text-secondary text-center mt-3">

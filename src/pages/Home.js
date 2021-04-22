@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "components/Header";
+import Layout from "Layout";
 import Products from "components/Products";
 // 函式寫法
 function Home() {
@@ -8,8 +8,9 @@ function Home() {
 
   return (
     <>
-      <Header nickname="User" />
-      <Products />
+      <Layout>
+        <Products />
+      </Layout>
     </>
   );
 }

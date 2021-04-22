@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "common/axios";
+import { withRouter } from "react-router-dom";
 import { formatPrice } from "common/helper";
 import { toast } from "react-toastify";
 import Panel from "components/Panel";
@@ -16,7 +17,7 @@ class Product extends React.Component {
         delete: this.props.delete,
       },
       callback: (data) => {
-        console.log(data);
+        // console.log(data);
         if (data) {
           this.props.update(data);
         }
@@ -25,7 +26,13 @@ class Product extends React.Component {
   };
   //
   addToCart = async () => {
+    if (!global.auth.isLogin()) {
+      this.props.history.push("/login");
+      toast.dark("Please login first !");
+      return;
+    }
     try {
+      const user = global.auth.getUser() || {};
       const { id, name, image1, price } = this.props.product;
       const res = await axios.get(`/carts?productId=${id}`);
       const carts = res.data;
@@ -41,15 +48,17 @@ class Product extends React.Component {
           image: image1,
           price,
           mount: 1,
+          userId: user.email,
         };
         await axios.post("/carts", cart).then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
         });
       }
       //
       toast.dark("Add Cart Success !");
       this.props.updateCartNum();
     } catch (error) {
+      console.log(error);
       toast.error("Add Cart Failed !");
     }
   };
@@ -60,7 +69,21 @@ class Product extends React.Component {
   enterChangeImg = () => {
     this.setState({ imgState: true });
   };
-
+  //
+  renderManagerBtn = () => {
+    const user = global.auth.getUser() || {};
+    if (user.type === 1) {
+      return (
+        <button
+          className="edit-btn btn btn-light d-flex justify-content-center align-items-center position-absolute rounded-circle"
+          onClick={this.toEdit}
+        >
+          <i className="fas fa-list"></i>
+        </button>
+      );
+    }
+  };
+  //
   render() {
     const { name, image1, image2, tags, price, status } = this.props.product;
 
@@ -86,12 +109,7 @@ class Product extends React.Component {
                 onMouseLeave={this.leaveChangeImg}
               />
             </figure>
-            <button
-              className="edit-btn btn btn-light d-flex justify-content-center align-items-center position-absolute rounded-circle"
-              onClick={this.toEdit}
-            >
-              <i className="fas fa-list"></i>
-            </button>
+            {this.renderManagerBtn()}
           </div>
           <div className="product-info">
             <small className="text-secondary font-italic">{tags}</small>
@@ -118,4 +136,4 @@ class Product extends React.Component {
     );
   }
 }
-export default Product;
+export default withRouter(Product);
