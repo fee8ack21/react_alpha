@@ -5,7 +5,7 @@ class AddInventory extends React.Component {
   state = {
     name: "",
     price: "",
-    tags: "",
+    color: "",
     image1: "",
     image2: "",
     status: "available",
@@ -85,13 +85,13 @@ class AddInventory extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="add-tags">Tags：</label>
+            <label htmlFor="add-color">Color：</label>
             <input
-              id="add-tags"
+              id="add-color"
               className="form-control"
-              name="tags"
+              name="color"
               type="text"
-              value={this.state.tags}
+              value={this.state.color}
               onChange={this.handleChange}
             />
           </div>

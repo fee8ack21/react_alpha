@@ -6,7 +6,7 @@ class EditInventory extends React.Component {
     id: "",
     name: "",
     price: "",
-    tags: "",
+    color: "",
     image1: "",
     image2: "",
     status: "available",
@@ -18,7 +18,7 @@ class EditInventory extends React.Component {
       name,
       image1,
       image2,
-      tags,
+      color,
       price,
       status,
     } = this.props.product;
@@ -28,7 +28,7 @@ class EditInventory extends React.Component {
       name,
       image1,
       image2,
-      tags,
+      color,
       price,
       status,
     });
@@ -118,13 +118,13 @@ class EditInventory extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="edit-tags">Tags：</label>
+            <label htmlFor="edit-color">Color：</label>
             <input
-              id="edit-tags"
+              id="edit-color"
               className="form-control"
-              name="tags"
+              name="color"
               type="text"
-              value={this.state.tags}
+              value={this.state.color}
               onChange={this.handleChange}
             />
           </div>

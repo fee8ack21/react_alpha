@@ -87,7 +87,15 @@ class Product extends React.Component {
   };
   //
   render() {
-    const { name, image1, image2, tags, price, status } = this.props.product;
+    const {
+      name,
+      image1,
+      image2,
+      color,
+      price,
+      status,
+      time,
+    } = this.props.product;
 
     return (
       <div className="product col-6 col-md-4 col-xl-3 mb-3">
@@ -114,8 +122,11 @@ class Product extends React.Component {
             {this.renderManagerBtn()}
           </div>
           <div className="product-info">
-            <small className="text-secondary font-italic">{tags}</small>
+            <small className="text-secondary font-italic">{color.length + " Colors"}</small>
             <p>{name}</p>
+          </div>
+          <div>
+            <small className="text-secondary font-italic">{time}</small>
           </div>
           <div className="d-flex justify-content-between align-items-center">
             <p className="mb-0">{formatPrice(price)}</p>
