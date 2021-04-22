@@ -1,8 +1,12 @@
 import _axios from "axios";
 
 const axios = (baseURL) => {
+  const devUrl =
+    window.location.host === "react-udemy-alpha.herokuapp.com"
+      ? "https://react-udemy-alpha-api.herokuapp.com"
+      : "http://localhost:3003";
   const instance = _axios.create({
-    baseURL: baseURL || "http://localhost:3003",
+    baseURL: baseURL || devUrl,
     timeout: 0,
   });
   instance.interceptors.request.use(
