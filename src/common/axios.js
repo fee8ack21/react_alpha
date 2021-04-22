@@ -7,7 +7,7 @@ const axios = (baseURL) => {
   //     ? "https://react-udemy-alpha-api.herokuapp.com"
   //     : "http://localhost:3003";
   const instance = _axios.create({
-    baseURL: process.env.Base_Url || "http://localhost:3003",
+    baseURL: process.env.REACT_APP_BASE_URL || "http://localhost:3003",
     timeout: 0,
   });
   instance.interceptors.request.use(
