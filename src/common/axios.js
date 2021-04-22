@@ -1,12 +1,13 @@
 import _axios from "axios";
+require("dotenv").config();
 
 const axios = (baseURL) => {
-  const devUrl =
-    window.location.host === "react-udemy-alpha.herokuapp.com"
-      ? "https://react-udemy-alpha-api.herokuapp.com"
-      : "http://localhost:3003";
+  // const devUrl =
+  //   window.location.host === "react-udemy-alpha.herokuapp.com"
+  //     ? "https://react-udemy-alpha-api.herokuapp.com"
+  //     : "http://localhost:3003";
   const instance = _axios.create({
-    baseURL: baseURL || devUrl,
+    baseURL: process.env.Base_Url || "http://localhost:3003",
     timeout: 0,
   });
   instance.interceptors.request.use(
