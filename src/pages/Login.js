@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 // 類別寫法
 export default function Login(props) {
   //
+  if (global.auth.isLogin()) {
+    props.history.push("/");
+  }
   const {
     register,
     handleSubmit,
@@ -21,11 +24,11 @@ export default function Login(props) {
       global.auth.setToken(jwToken);
       //
       localStorage.setItem("store_token_id", jwToken);
-      toast.dark("Login successfully !");
+      toast("Login successfully !");
       props.history.push("/");
     } catch (error) {
       const message = error.response.data;
-      toast.dark(message);
+      toast(message);
     }
   };
   return (

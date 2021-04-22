@@ -25,22 +25,14 @@ const CartItem = (props) => {
     });
   };
   return (
-    <tr className="bg-white">
+    <tr className="cart-item bg-white">
       <td className="py-3 text-center">
         <a href="#!" onClick={deleteCart}>
           <i className="fas fa-times"></i>
         </a>
       </td>
       <td className="py-3 text-center">
-        <img
-          src={image}
-          style={{
-            width: "120px",
-            height: "120px",
-            objectFit: "cover",
-          }}
-          alt=""
-        />
+        <img src={image} alt="" />
       </td>
       <td className="py-3">
         <p className="h5 text-center mb-0">{name}</p>
@@ -52,7 +44,6 @@ const CartItem = (props) => {
         <input
           type="number"
           className="form-control mx-auto"
-          style={{ width: "100px" }}
           value={mount}
           min={1}
           onChange={handleChanger}

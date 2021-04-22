@@ -13,4 +13,14 @@
     opacity: 0;
     transition: opacity 200ms;
   }
+  //
+  .td-sm-width {
+    width: 53px;
+  }
+  .td-md-width {
+    min-width: 153px;
+  }
+  .td-lg-width {
+    min-width: 417px;
+  }
 }

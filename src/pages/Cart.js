@@ -42,16 +42,18 @@ const Cart = () => {
           </div>
           <div>
             <div className="cart-item-wrap py-3">
-              <div className="overflow-scroll">
-                <table className="w-100">
+              <div style={{ overflowX: "scroll" }}>
+                <table style={{ minWidth: "100%" }}>
                   <thead>
                     <tr className="border-bottom border-primary">
-                      <th className="text-center pb-3 px-5">#</th>
-                      <th className="text-center pb-3">Image</th>
-                      <th className="text-center pb-3">Name</th>
-                      <th className="text-center pb-3">Price</th>
-                      <th className="text-center pb-3">Amount</th>
-                      <th className="text-center pb-3 px-5">Total</th>
+                      <th className="td-sm-width text-center pb-3 px-4">#</th>
+                      <th className="td-md-width text-center pb-3">Image</th>
+                      <th className="td-lg-width text-center pb-3">Name</th>
+                      <th className="td-md-width text-center pb-3">Price</th>
+                      <th className="td-md-width text-center pb-3">Amount</th>
+                      <th className="td-md-width text-center pb-3 px-5">
+                        Total
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -71,29 +73,41 @@ const Cart = () => {
                         </CSSTransition>
                       ))}
                     </TransitionGroup>
+                    {/*  */}
+                    {carts.length === 0 ? (
+                      <CSSTransition
+                        classNames="cart-item-fade"
+                        timeout={{ enter: 200, exit: 200 }}
+                      >
+                        <tr
+                          className="text-center text-secondary bg-white font-weight-bold"
+                          style={{ height: "153px" }}
+                        >
+                          <td className="mb-0 font-italic" colSpan={6}>
+                            <span
+                              className="position-fixed"
+                              style={{
+                                top: "230px",
+                                left: "50%",
+                                transform: "translate(-50%)",
+                              }}
+                            >
+                              No Goods
+                            </span>
+                          </td>
+                        </tr>
+                      </CSSTransition>
+                    ) : (
+                      ""
+                    )}
                   </tbody>
                 </table>
-                {carts.length === 0 ? (
-                  <CSSTransition
-                    classNames="cart-item-fade"
-                    timeout={{ enter: 200, exit: 200 }}
-                  >
-                    <div
-                      className="d-flex justify-content-center align-items-center text-secondary bg-white font-weight-bold"
-                      style={{ height: "153px" }}
-                    >
-                      No Goods
-                    </div>
-                  </CSSTransition>
-                ) : (
-                  ""
-                )}
               </div>
             </div>
           </div>
           <div className="d-flex justify-content-end">
             <div>
-              <p className="h4 font-weight-bold">
+              <p className="h5 font-weight-bold">
                 Total：
                 <span className="text-danger font-italic">{totalPrice}</span>
               </p>

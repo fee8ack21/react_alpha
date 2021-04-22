@@ -2,7 +2,6 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import UserProfile from "components/UserProfile";
 import Panel from "components/Panel";
-// import ReactDOM from "react-dom";
 // 類別寫法
 class Header extends React.Component {
   toProfile() {
@@ -64,30 +63,5 @@ class Header extends React.Component {
     );
   }
 }
-
-// 函式寫法
-// function Header(props) {
-//   return (
-//     <header className="bg-dark py-2">
-//       <div className="container">
-//         <div className="d-flex">
-//           <div>
-//             <a href="/" className="text-decoration-none text-white">
-//               Home
-//             </a>
-//           </div>
-//           <div className="ml-auto">
-//             <a href="/login" className="text-decoration-none text-white mr-4">
-//               {props.nickname ? props.nickname : "Login"}
-//             </a>
-//             <a href="/register" className="text-decoration-none text-white">
-//               Register
-//             </a>
-//           </div>
-//         </div>
-//       </div>
-//     </header>
-//   );
-// }
 
 export default withRouter(Header);

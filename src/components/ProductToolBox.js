@@ -23,7 +23,7 @@ class ProductToolBox extends React.Component {
   goCart = () => {
     if (!global.auth.isLogin()) {
       this.props.history.push("/login");
-      toast.dark("Please login first !");
+      toast("Please login first !");
       return;
     }
     this.props.history.push("/cart");

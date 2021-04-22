@@ -18,7 +18,7 @@ class Product extends React.Component {
       },
       callback: (data) => {
         // console.log(data);
-        if (data) {
+        if (data.id) {
           this.props.update(data);
         }
       },
@@ -28,7 +28,7 @@ class Product extends React.Component {
   addToCart = async () => {
     if (!global.auth.isLogin()) {
       this.props.history.push("/login");
-      toast.dark("Please login first !");
+      toast("Please login first !");
       return;
     }
     try {
@@ -38,9 +38,11 @@ class Product extends React.Component {
       const carts = res.data;
       console.log(carts);
       if (carts && carts.length > 0) {
-        const cart = carts[0];
-        cart.mount += 1;
-        await axios.put(`/carts/${cart.id}`, cart);
+        if (carts[0].userId === user.email) {
+          const cart = carts[0];
+          cart.mount += 1;
+          await axios.put(`/carts/${cart.id}`, cart);
+        }
       } else {
         const cart = {
           productId: id,
@@ -55,7 +57,7 @@ class Product extends React.Component {
         });
       }
       //
-      toast.dark("Add Cart Success !");
+      toast("Add Cart Success !");
       this.props.updateCartNum();
     } catch (error) {
       console.log(error);

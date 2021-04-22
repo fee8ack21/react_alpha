@@ -5,6 +5,10 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 export default function Register(props) {
   //
+  if (global.auth.isLogin()) {
+    props.history.push("/");
+  }
+  //
   const {
     register,
     handleSubmit,
@@ -25,11 +29,11 @@ export default function Register(props) {
       global.auth.setToken(jwToken);
       //
       localStorage.setItem("store_token_id", jwToken);
-      toast.dark("Register successfully !");
+      toast("Register successfully !");
       props.history.push("/");
     } catch (error) {
       const message = error.response.data;
-      toast.dark(message);
+      toast(message);
     }
   };
   return (
@@ -41,17 +45,13 @@ export default function Register(props) {
         <div className="form-group">
           <label htmlFor="" className="position-relative">
             Nickname
-            <i
-              className="far fa-user position-absolute text-secondary"
-              style={{ fontSize: "20px", left: "10px", bottom: "-38px" }}
-            ></i>
+            <i className="far fa-user position-absolute text-secondary"></i>
           </label>
           <input
             type="text"
             name="nickname"
             autoComplete="chrome-off"
             className={`form-control ${errors.nickname && "is-invalid"}`}
-            style={{ paddingLeft: "40px" }}
             {...register("nickname", {
               required: true,
             })}
@@ -65,10 +65,7 @@ export default function Register(props) {
         <div className="form-group position-relative">
           <label htmlFor="" className="position-relative">
             Email
-            <i
-              className="far fa-envelope position-absolute text-secondary"
-              style={{ fontSize: "20px", left: "10px", bottom: "-38px" }}
-            ></i>
+            <i className="far fa-envelope position-absolute text-secondary"></i>
           </label>
           <input
             type="text"
@@ -76,7 +73,6 @@ export default function Register(props) {
             placeholder=""
             autoComplete="chrome-off"
             className={`form-control ${errors.email && "is-invalid"}`}
-            style={{ paddingLeft: "40px" }}
             {...register("email", {
               required: true,
               pattern: /^\w+(\[\+\.-\]?\w)*@\w+(\[\.-\]?\w+)*\.[a-z]+$/i,
@@ -96,10 +92,7 @@ export default function Register(props) {
         <div className="form-group position-relative">
           <label htmlFor="" className="position-relative">
             Password
-            <i
-              className="fas fa-lock position-absolute text-secondary"
-              style={{ fontSize: "20px", left: "10px", bottom: "-38px" }}
-            ></i>
+            <i className="fas fa-lock position-absolute text-secondary"></i>
           </label>
 
           <input
@@ -108,7 +101,6 @@ export default function Register(props) {
             placeholder=""
             autoComplete="chrome-off"
             className={`form-control ${errors.password && "is-invalid"}`}
-            style={{ paddingLeft: "40px" }}
             {...register("password", { required: true, minLength: 3 })}
           />
           {!!errors.password && errors.password.type === "required" ? (

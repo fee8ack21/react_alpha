@@ -1,5 +1,5 @@
 export const formatPrice = (cents) => {
-  return (cents / 100).toLocaleString("zh", {
+  return (cents / 1).toLocaleString("zh", {
     style: "currency",
     currency: "TWD",
   });
