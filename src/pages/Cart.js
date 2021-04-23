@@ -11,9 +11,15 @@ const Cart = () => {
   useEffect(() => {
     const user = global.auth.getUser() || {};
 
-    axios.get(`/carts?userId=${user.email}`).then((res) => {
-      setCarts(res.data);
-    });
+    axios
+      .get(`/carts?userId=${user.email}`)
+      .then((res) => {
+        setCarts(res.data);
+      })
+      .finally(() => {
+        const ele = document.getElementById("spinner-wrap");
+        ele.remove();
+      });
   }, []);
   //
   const totalPrice = useMemo(() => {

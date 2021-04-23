@@ -3,6 +3,7 @@ import ProductToolBox from "components/ProductToolBox";
 import Product from "components/Product";
 import axios from "common/axios";
 import Panel from "components/Panel";
+import Spinner from "components/Spinner";
 import AddInventory from "components/AddInventory";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 // 類別寫法
@@ -29,12 +30,18 @@ class Products extends React.Component {
     // });
 
     // module way
-    axios.get("/products").then((response) => {
-      this.setState({
-        sourceProducts: response.data,
-        filterProducts: [...response.data],
+    axios
+      .get("/products")
+      .then((response) => {
+        this.setState({
+          sourceProducts: response.data,
+          filterProducts: [...response.data],
+        });
+      })
+      .finally(() => {
+        const ele = document.getElementById("spinner-wrap");
+        ele.remove();
       });
-    });
     this.updateCartNum();
   }
   //
