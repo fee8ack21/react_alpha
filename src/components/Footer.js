@@ -18,7 +18,12 @@ function Footer() {
             cite="https://www.facebook.com/104903445063158"
             className="fb-xfbml-parse-ignore"
           >
-            <a href="https://www.facebook.com/104903445063158"></a>
+            <a
+              href="https://www.facebook.com/104903445063158"
+              style={{ color: "transparent" }}
+            >
+              黃品睿
+            </a>
           </blockquote>
         </div>
         <div className="d-flex flex-column justify-content-center mx-3">

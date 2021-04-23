@@ -4,7 +4,7 @@ function Messenger() {
     <>
       <div id="fb-root"></div>
       <div
-        class="fb-customerchat"
+        className="fb-customerchat"
         attribution="page_inbox"
         page_id="104903445063158"
       ></div>
