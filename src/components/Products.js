@@ -62,7 +62,7 @@ class Products extends React.Component {
     Panel.openPanel({
       component: AddInventory,
       callback: (data) => {
-        if (data !== undefined) {
+        if (data !== undefined && "id" in data) {
           console.log(data);
           this.add(data);
         }

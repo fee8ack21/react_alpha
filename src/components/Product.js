@@ -18,7 +18,7 @@ class Product extends React.Component {
       },
       callback: (data) => {
         // console.log(data);
-        if (data !== undefined) {
+        if (data !== undefined && "id" in data) {
           this.props.update(data);
         }
       },
