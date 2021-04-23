@@ -10,6 +10,7 @@ class EditInventory extends React.Component {
     image1: "",
     image2: "",
     status: "available",
+    time: "",
   };
   //
   componentDidMount() {
@@ -21,6 +22,7 @@ class EditInventory extends React.Component {
       color,
       price,
       status,
+      time,
     } = this.props.product;
     //
     this.setState({
@@ -31,6 +33,7 @@ class EditInventory extends React.Component {
       color,
       price,
       status,
+      time,
     });
   }
   //
@@ -67,6 +70,16 @@ class EditInventory extends React.Component {
     });
   };
   //
+  addColor = (e) => {
+    const newColorArr = [...this.state.color];
+    newColorArr.push(e.target.value);
+    console.log(newColorArr);
+    this.setState({ color: newColorArr });
+  };
+  //
+  clearColor = (e) => {
+    this.setState({ color: [] });
+  };
   render() {
     return (
       <div className="edit-inventory-wrap">
@@ -117,8 +130,17 @@ class EditInventory extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="edit-color">Color：</label>
+          <div className="form-group position-relative">
+            <label htmlFor="edit-color">
+              Color： <input type="color" onChange={this.addColor} />
+              <span
+                className="position-absolute"
+                style={{ right: "10px", top: "38px", cursor: "pointer" }}
+                onClick={this.clearColor}
+              >
+                <i class="fas fa-times"></i>
+              </span>
+            </label>
             <input
               id="edit-color"
               className="form-control"

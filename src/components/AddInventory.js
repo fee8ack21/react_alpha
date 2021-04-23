@@ -5,10 +5,11 @@ class AddInventory extends React.Component {
   state = {
     name: "",
     price: "",
-    color: "",
+    color: [],
     image1: "",
     image2: "",
     status: "available",
+    time: "",
   };
   //
   showToast = () => {
@@ -25,13 +26,29 @@ class AddInventory extends React.Component {
     });
   };
   //
-  submit = (e) => {
+  submit = async (e) => {
     e.preventDefault();
+    await this.setState({
+      time: `${new Date().getFullYear()}-${
+        new Date().getMonth() + 1
+      }-${new Date().getDate()}`,
+    });
     const product = { ...this.state };
     axios.post("products", product).then((res) => {
       this.props.close(res.data);
       this.showToast();
     });
+  };
+  //
+  addColor = (e) => {
+    const newColorArr = [...this.state.color];
+    newColorArr.push(e.target.value);
+    console.log(newColorArr);
+    this.setState({ color: newColorArr });
+  };
+  //
+  clearColor = (e) => {
+    this.setState({ color: [] });
   };
   //
   render() {
@@ -84,11 +101,22 @@ class AddInventory extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="add-color">Color：</label>
+          <div className="form-group position-relative">
+            <label htmlFor="add-color">
+              Color：
+              <input type="color" onChange={this.addColor} />
+              <span
+                className="position-absolute"
+                style={{ right: "10px", top: "38px", cursor: "pointer" }}
+                onClick={this.clearColor}
+              >
+                <i class="fas fa-times"></i>
+              </span>
+            </label>
             <input
               id="add-color"
               className="form-control"
+              disabled
               name="color"
               type="text"
               value={this.state.color}

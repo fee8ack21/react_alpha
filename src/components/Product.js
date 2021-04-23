@@ -18,7 +18,7 @@ class Product extends React.Component {
       },
       callback: (data) => {
         // console.log(data);
-        if (data.id) {
+        if (data !== undefined) {
           this.props.update(data);
         }
       },
@@ -122,7 +122,9 @@ class Product extends React.Component {
             {this.renderManagerBtn()}
           </div>
           <div className="product-info">
-            <small className="text-secondary font-italic">{color.length + " Colors"}</small>
+            <small className="text-secondary font-italic">
+              {color.length + " Colors"}
+            </small>
             <p>{name}</p>
           </div>
           <div>
