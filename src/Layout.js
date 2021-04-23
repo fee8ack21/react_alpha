@@ -17,6 +17,7 @@ const Layout = (props) => {
         pageId="104903445063158"
         appId="366104244735566"
         htmlRef={window.location.pathname}
+        greetingDialogDisplay="show"
       />
     </>
   );
