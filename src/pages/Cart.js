@@ -4,9 +4,14 @@ import CartItem from "components/CartItem";
 import axios from "common/axios";
 import { formatPrice } from "common/helper";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import Spinner from "components/Spinner";
 
-const Cart = () => {
+const Cart = (props) => {
+  if (!global.auth.isLogin()) {
+    props.history.push("/login");
+  }
   const [carts, setCarts] = useState([]);
+  const [loadingState, setLoadingState] = useState(false);
   //
   useEffect(() => {
     const user = global.auth.getUser() || {};
@@ -17,8 +22,7 @@ const Cart = () => {
         setCarts(res.data);
       })
       .finally(() => {
-        const ele = document.getElementById("spinner-wrap");
-        ele.remove();
+        setLoadingState(true);
       });
   }, []);
   //
@@ -41,6 +45,7 @@ const Cart = () => {
   };
   return (
     <>
+      {!loadingState && <Spinner />}
       <Layout>
         <div className="cart-wrap container">
           <div className="py-3 border-bottom border-primary">

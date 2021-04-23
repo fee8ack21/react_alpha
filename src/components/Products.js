@@ -13,6 +13,7 @@ class Products extends React.Component {
     filterProducts: [],
     panelState: false,
     cartNum: 0,
+    loadingState: false,
   };
   componentDidMount() {
     // fetch api
@@ -39,8 +40,7 @@ class Products extends React.Component {
         });
       })
       .finally(() => {
-        const ele = document.getElementById("spinner-wrap");
-        ele.remove();
+        this.setState({ loadingState: true });
       });
     this.updateCartNum();
   }
@@ -142,6 +142,7 @@ class Products extends React.Component {
   render() {
     return (
       <>
+        {!this.state.loadingState && <Spinner />}
         <div className="products container">
           <ProductToolBox search={this.search} cartNum={this.state.cartNum} />
           <div className="product-list row mt-3">

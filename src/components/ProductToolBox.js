@@ -20,7 +20,8 @@ class ProductToolBox extends React.Component {
     this.props.search("");
   };
   //
-  goCart = () => {
+  goCart = (e) => {
+    e.preventDefault();
     if (!global.auth.isLogin()) {
       this.props.history.push("/login");
       toast("Please login first !");
@@ -54,7 +55,13 @@ class ProductToolBox extends React.Component {
             </div>
           </div>
           <div className="cart-icon-wrap">
-            <a href="#!" className="position-relative" onClick={this.goCart}>
+            <a
+              href="#!"
+              className="position-relative"
+              onClick={(e) => {
+                this.goCart(e);
+              }}
+            >
               <i className="fas fa-shopping-cart"></i>
               <span className="badge badge-pill badge-danger position-absolute text-center">
                 {this.props.cartNum}
