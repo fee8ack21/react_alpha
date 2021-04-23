@@ -16,7 +16,7 @@ const Layout = (props) => {
       <MessengerCustomerChat
         pageId="104903445063158"
         appId="366104244735566"
-        htmlRef="https://www.facebook.com/%E9%BB%83%E5%93%81%E7%9D%BF-Pin-Jui-104903445063158"
+        htmlRef={window.location.pathname}
       />
     </>
   );
