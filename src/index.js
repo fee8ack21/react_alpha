@@ -8,7 +8,7 @@ import "common/auth";
 ReactDOM.render(
   <>
     <ToastContainer
-      position="top-right"
+      position="bottom-right"
       autoClose={5000}
       hideProgressBar
       newestOnTop={false}

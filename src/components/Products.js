@@ -145,7 +145,10 @@ class Products extends React.Component {
         {!this.state.loadingState && <Spinner />}
         <div className="products container">
           <ProductToolBox search={this.search} cartNum={this.state.cartNum} />
-          <div className="product-list row mt-3">
+          <div
+            className="product-list row mt-3"
+            style={{ minHeight: "calc(100vh - 293px)" }}
+          >
             <TransitionGroup component={null}>
               {!!this.state.filterProducts
                 ? this.state.filterProducts.map((item) => {

@@ -51,9 +51,13 @@ const Cart = (props) => {
           <div className="py-3 border-bottom border-primary">
             <h3>Cart</h3>
           </div>
-          <div>
+          <div style={{ minHeight: "calc(100vh - 309px)" }}>
             <div className="cart-item-wrap py-3">
-              <div style={{ overflowX: "scroll" }}>
+              <div
+                style={{
+                  overflowX: "scroll",
+                }}
+              >
                 <table style={{ minWidth: "100%" }}>
                   <thead>
                     <tr className="border-bottom border-primary">
