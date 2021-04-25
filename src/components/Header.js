@@ -4,6 +4,9 @@ import UserProfile from "components/UserProfile";
 import Panel from "components/Panel";
 // 類別寫法
 class Header extends React.Component {
+  state = {
+    igURL: "https://www.instagram.com/pin_jui_huang/",
+  };
   toProfile() {
     Panel.openPanel({
       component: UserProfile,
@@ -29,18 +32,17 @@ class Header extends React.Component {
             this.toProfile();
           }}
         >
-          <i className="far fa-user mr-2"></i>
           {user.nickname}
         </span>
       );
     } else {
       return (
         <>
-          <Link to="/login" className="fs-md-rwd text-decoration-none text-white mr-4">
-            Login
-          </Link>
-          <Link to="/register" className="fs-md-rwd text-decoration-none text-white">
-            Register
+          <Link
+            to="/login"
+            className="fs-md-rwd text-decoration-none text-white"
+          >
+            Log In
           </Link>
         </>
       );
@@ -48,15 +50,44 @@ class Header extends React.Component {
   }
   render() {
     return (
-      <header className="bg-primary py-2">
+      <header className="main-header bg-primary py-2">
         <div className="container">
-          <div className="d-flex">
+          <div className="d-flex align-items-center">
             <div>
-              <Link to="/" className="fs-md-rwd text-decoration-none text-white">
+              <Link
+                to="/"
+                className="fs-md-rwd text-decoration-none text-white"
+              >
                 Home
               </Link>
             </div>
-            <div className="ml-auto">{this.renderLink()}</div>
+            <div className="d-flex align-items-center ml-auto">
+              <Link
+                to="line_url"
+                className="text-white text-decoration-none mr-3"
+                target="_blank"
+              >
+                <i class="fab fa-line" style={{ fontSize: "20px" }}></i>
+              </Link>
+              <Link
+                to="/fb_url"
+                className="text-white text-decoration-none mr-3"
+                target="_blank"
+              >
+                <i
+                  class="fab fa-facebook-square"
+                  style={{ fontSize: "20px" }}
+                ></i>
+              </Link>
+              <Link
+                to="/ig_url"
+                className="text-white text-decoration-none mr-3"
+                target="_blank"
+              >
+                <i class="fab fa-instagram" style={{ fontSize: "20px" }}></i>
+              </Link>
+              {this.renderLink()}
+            </div>
           </div>
         </div>
       </header>

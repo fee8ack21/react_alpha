@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="container">
+    <footer className="main-footer container">
       <div className="d-flex flex-column flex-md-row justify-content-center align-items-center border-top border-primary py-3">
         <div
           className="fb-fanspage-wrap d-flex"

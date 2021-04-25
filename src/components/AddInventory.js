@@ -56,7 +56,9 @@ class AddInventory extends React.Component {
       <div className="add-inventory-wrap">
         <form action="" onSubmit={this.submit}>
           <div className="form-group">
-            <label htmlFor="add-name" className="fs-md-rwd">Name：</label>
+            <label htmlFor="add-name" className="fs-md-rwd">
+              Name：
+            </label>
             <textarea
               id="add-name"
               className="fs-md-rwd form-control"
@@ -68,7 +70,9 @@ class AddInventory extends React.Component {
             ></textarea>
           </div>
           <div className="form-group">
-            <label htmlFor="add-price" className="fs-md-rwd">Price：</label>
+            <label htmlFor="add-price" className="fs-md-rwd">
+              Price：
+            </label>
             <input
               id="add-price"
               className="fs-md-rwd form-control"
@@ -80,7 +84,9 @@ class AddInventory extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="add-image1" className="fs-md-rwd">Image1：</label>
+            <label htmlFor="add-image1" className="fs-md-rwd">
+              Image1：
+            </label>
             <input
               id="add-image1"
               className="fs-md-rwd form-control"
@@ -91,7 +97,9 @@ class AddInventory extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="add-image2" className="fs-md-rwd">Image2：</label>
+            <label htmlFor="add-image2" className="fs-md-rwd">
+              Image2：
+            </label>
             <input
               id="add-image2"
               className="fs-md-rwd form-control"
@@ -116,7 +124,7 @@ class AddInventory extends React.Component {
             <input
               id="add-color"
               className="fs-md-rwd form-control"
-              disabled
+              readonly="readonly"
               name="color"
               type="text"
               value={this.state.color}
@@ -124,7 +132,9 @@ class AddInventory extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="add-available" className="fs-md-rwd">Status：</label>
+            <label htmlFor="add-available" className="fs-md-rwd">
+              Status：
+            </label>
             <select
               id="add-available"
               className="fs-md-rwd form-control"
@@ -132,8 +142,12 @@ class AddInventory extends React.Component {
               value={this.state.status}
               onChange={this.handleChange}
             >
-              <option value="available" className="fs-md-rwd">available</option>
-              <option value="outOfStock" className="fs-md-rwd">out of stock</option>
+              <option value="available" className="fs-md-rwd">
+                available
+              </option>
+              <option value="outOfStock" className="fs-md-rwd">
+                out of stock
+              </option>
             </select>
           </div>
           <div className="btn-wrap form-group d-flex justify-content-between">

@@ -10,27 +10,36 @@ export default function UserProfile(props) {
       <h4 className="text-center mb-5">Profile</h4>
       <div>
         <div className="form-group">
-          <label htmlFor="" className="fs-md-rwd">Nickname：</label>
+          <label htmlFor="" className="fs-md-rwd">
+            Nickname：
+          </label>
           <input
             type="text"
             className="fs-md-rwd form-control"
             defaultValue={props.user.nickname}
+            readonly="readonly"
           />
         </div>
         <div className="form-group">
-          <label htmlFor="" className="fs-md-rwd">Email：</label>
+          <label htmlFor="" className="fs-md-rwd">
+            Email：
+          </label>
           <input
             type="text"
             className="fs-md-rwd form-control"
             defaultValue={props.user.email}
+            readonly="readonly"
           />
         </div>
         <div className="form-group">
-          <label htmlFor="" className="fs-md-rwd">Type：</label>
+          <label htmlFor="" className="fs-md-rwd">
+            Type：
+          </label>
           <input
             type="text"
             className="fs-md-rwd form-control"
             defaultValue={props.user.type === 1 ? "Manager" : "General User"}
+            readonly="readonly"
           />
         </div>
         <div className="btn-wrap form-group d-flex justify-content-between">
