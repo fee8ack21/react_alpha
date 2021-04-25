@@ -17,9 +17,9 @@
     width: 300px;
     top: 0px;
     bottom: 0px;
-    right: 0px;
+    left: 0px;
     z-index: 999;
-    margin-right: -300px;
+    margin-left: -300px;
     transition: 0.3s;
     .panel-head {
       .close-icon {
@@ -33,7 +33,7 @@
       background-color: rgba(0, 0, 0, 0.3);
     }
     .panel {
-      margin-right: 0px;
+      margin-left: 0px;
     }
   }
 }
@@ -42,7 +42,7 @@
   .panel-wrap {
     .panel {
     width: 380px;
-    margin-right: -380px;
+    margin-left: -380px;
     }
   }  
 }

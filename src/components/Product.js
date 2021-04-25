@@ -28,7 +28,7 @@ class Product extends React.Component {
   addToCart = async () => {
     if (!global.auth.isLogin()) {
       this.props.history.push("/login");
-      toast("Please login first !");
+      toast("Please login to continue!");
       return;
     }
     try {
@@ -57,11 +57,11 @@ class Product extends React.Component {
         });
       }
       //
-      toast("Add Cart Success !");
+      toast("Added to cart successfully!");
       this.props.updateCartNum();
     } catch (error) {
       console.log(error);
-      toast.error("Add Cart Failed !");
+      toast("Add to cart failed!");
     }
   };
   //

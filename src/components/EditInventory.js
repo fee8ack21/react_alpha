@@ -39,7 +39,7 @@ class EditInventory extends React.Component {
   }
   //
   showToast = () => {
-    toast.dark("Your submission has been saved !", {
+    toast("Your submission has been saved!", {
       autoClose: true,
     });
   };

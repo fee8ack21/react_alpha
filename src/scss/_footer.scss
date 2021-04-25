@@ -1,0 +1,17 @@
+footer {
+  .fb-fanspage-wrap {
+    width: 100%;
+    overflow: hidden;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  footer {
+    .fb-fanspage-wrap {
+      width: 50%;
+    }
+    .store-info-wrap {
+      width: 50%;
+    }
+  }
+}

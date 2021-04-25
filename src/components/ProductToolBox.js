@@ -24,7 +24,7 @@ class ProductToolBox extends React.Component {
     e.preventDefault();
     if (!global.auth.isLogin()) {
       this.props.history.push("/login");
-      toast("Please login first !");
+      toast("Please login to continue!");
       return;
     }
     this.props.history.push("/cart");
