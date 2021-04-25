@@ -67,7 +67,7 @@ class Header extends React.Component {
                 className="text-white text-decoration-none mr-3"
                 target="_blank"
               >
-                <i class="fab fa-line" style={{ fontSize: "20px" }}></i>
+                <i className="fab fa-line" style={{ fontSize: "20px" }}></i>
               </Link>
               <Link
                 to="/fb_url"
@@ -75,7 +75,7 @@ class Header extends React.Component {
                 target="_blank"
               >
                 <i
-                  class="fab fa-facebook-square"
+                  className="fab fa-facebook-square"
                   style={{ fontSize: "20px" }}
                 ></i>
               </Link>
@@ -84,7 +84,7 @@ class Header extends React.Component {
                 className="text-white text-decoration-none mr-3"
                 target="_blank"
               >
-                <i class="fab fa-instagram" style={{ fontSize: "20px" }}></i>
+                <i className="fab fa-instagram" style={{ fontSize: "20px" }}></i>
               </Link>
               {this.renderLink()}
             </div>

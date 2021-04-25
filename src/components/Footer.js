@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, useHistory } from "react-router-dom";
 
-function Footer() {
+function Footer(props) {
+  const [ifShow, setIfShow] = useState(false);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (
+      window.location.pathname === "/" ||
+      window.location.pathname === "/cart"
+    ) {
+      setIfShow(true);
+    } else {
+      setIfShow(false);
+    }
+  }, [history]);
   return (
-    <footer className="main-footer container">
+    <footer className={`main-footer container ${ifShow ? "" : "d-none"}`}>
       <div className="d-flex flex-column flex-md-row justify-content-center align-items-center border-top border-primary py-3">
-        <div
-          className="fb-fanspage-wrap d-flex"
-        >
+        <div className="fb-fanspage-wrap d-flex">
           <div
             className="fb-page mb-3 mb-md-0 mr-3 mx-auto"
             data-href="https://www.facebook.com/104903445063158"
