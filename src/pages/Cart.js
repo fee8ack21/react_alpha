@@ -123,7 +123,7 @@ const Cart = (props) => {
                         </tr>
                       </CSSTransition>
                     ) : (
-                      ""
+                      <></>
                     )}
                   </tbody>
                 </table>

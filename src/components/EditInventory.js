@@ -165,7 +165,7 @@ class EditInventory extends React.Component {
             <input
               id="edit-color"
               className="fs-md-rwd form-control"
-              readonly="readonly"
+              readOnly="readonly"
               name="color"
               type="text"
               value={this.state.color}
