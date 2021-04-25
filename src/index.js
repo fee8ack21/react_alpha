@@ -4,7 +4,6 @@ import App from "./App";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "common/auth";
-import Footer from 'components/Footer'
 //
 ReactDOM.render(
   <>
@@ -20,7 +19,6 @@ ReactDOM.render(
       pauseOnHover
     />
     <App />
-    <Footer/>
   </>,
   document.getElementById("root")
 );

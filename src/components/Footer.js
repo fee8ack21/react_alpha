@@ -4,17 +4,18 @@ import { BrowserRouter, useHistory } from "react-router-dom";
 function Footer(props) {
   const [ifShow, setIfShow] = useState(false);
   const history = useHistory();
-
-  useEffect(() => {
-    if (
-      window.location.pathname === "/" ||
-      window.location.pathname === "/cart"
-    ) {
+  //
+  const whetherShow = () => {
+    if (window.location.pathname === "/" || window.location.pathname === "/cart") {
       setIfShow(true);
     } else {
       setIfShow(false);
     }
-  }, [history]);
+  };
+  useEffect(() => {
+    whetherShow();
+  }, []);
+
   return (
     <footer className={`main-footer container ${ifShow ? "" : "d-none"}`}>
       <div className="d-flex flex-column flex-md-row justify-content-center align-items-center border-top border-primary py-3">
