@@ -38,7 +38,7 @@ export default function Login(props) {
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="form-group position-relative">
-          <label htmlFor="" className="position-relative">
+          <label htmlFor="" className="fs-md-rwd position-relative">
             Email
             <i className="far fa-envelope position-absolute text-secondary"></i>
           </label>
@@ -47,7 +47,7 @@ export default function Login(props) {
             name="email"
             placeholder=""
             autoComplete="chrome-off"
-            className={`form-control ${errors.email && "is-invalid"}`}
+            className={`fs-md-rwd form-control ${errors.email && "is-invalid"}`}
             {...register("email", {
               required: true,
               pattern: /^\w+(\[\+\.-\]?\w)*@\w+(\[\.-\]?\w+)*\.[a-z]+$/i,
@@ -65,7 +65,7 @@ export default function Login(props) {
           )}
         </div>
         <div className="form-group position-relative">
-          <label htmlFor="" className="position-relative">
+          <label htmlFor="" className="fs-md-rwd position-relative">
             Password
             <i className="fas fa-lock position-absolute text-secondary"></i>
           </label>
@@ -75,7 +75,7 @@ export default function Login(props) {
             name="password"
             placeholder=""
             autoComplete="chrome-off"
-            className={`form-control ${errors.password && "is-invalid"}`}
+            className={`fs-md-rwd form-control ${errors.password && "is-invalid"}`}
             {...register("password", { required: true, minLength: 3 })}
           />
           {!!errors.password && errors.password.type === "required" ? (
@@ -92,10 +92,10 @@ export default function Login(props) {
           )}
         </div>
         <div className="btn-wrap d-flex justify-content-between">
-          <Link to="/register" className="btn btn-secondary">
+          <Link to="/register" className="fs-md-rwd btn btn-secondary">
             Register
           </Link>
-          <button className="btn btn-primary" type="submit">
+          <button className="fs-md-rwd btn btn-primary" type="submit">
             Login
           </button>
         </div>

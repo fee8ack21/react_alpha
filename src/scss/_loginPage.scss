@@ -1,7 +1,7 @@
 .login-wrap {
   min-height: 100vh;
   form {
-    min-width: 400px;
+    min-width: 300px;
     .form-group {
       input {
         padding-left: 40px;
@@ -9,13 +9,32 @@
       i {
         font-size: 20px;
         left: 10px;
-        bottom: -38px;
+        bottom: -36px;
       }
     }
     .btn-wrap {
       button,
       a {
         width: 48%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .login-wrap {
+    form {
+      min-width: 400px;
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .login-wrap {
+    form {
+      .form-group {
+        i {
+          bottom: -38px;
+        }
       }
     }
   }

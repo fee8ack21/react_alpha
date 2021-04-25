@@ -7,42 +7,42 @@ export default function UserProfile(props) {
   };
   return (
     <div className="user-profile-wrap">
-      <h4 className="text-center">Profile</h4>
+      <h4 className="text-center mb-5">Profile</h4>
       <div>
         <div className="form-group">
-          <label htmlFor="">Nickname：</label>
+          <label htmlFor="" className="fs-md-rwd">Nickname：</label>
           <input
             type="text"
-            className="form-control"
+            className="fs-md-rwd form-control"
             defaultValue={props.user.nickname}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="">Email：</label>
+          <label htmlFor="" className="fs-md-rwd">Email：</label>
           <input
             type="text"
-            className="form-control"
+            className="fs-md-rwd form-control"
             defaultValue={props.user.email}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="">Type：</label>
+          <label htmlFor="" className="fs-md-rwd">Type：</label>
           <input
             type="text"
-            className="form-control"
+            className="fs-md-rwd form-control"
             defaultValue={props.user.type === 1 ? "Manager" : "General User"}
           />
         </div>
         <div className="btn-wrap form-group d-flex justify-content-between">
           <button
-            className="btn btn-secondary"
+            className="fs-md-rwd btn btn-secondary"
             onClick={() => {
               props.close();
             }}
           >
             Cancel
           </button>
-          <button className="btn btn-primary" onClick={logout}>
+          <button className="fs-md-rwd btn btn-primary" onClick={logout}>
             Logout
           </button>
         </div>

@@ -43,7 +43,7 @@ export default function Register(props) {
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="form-group">
-          <label htmlFor="" className="position-relative">
+          <label htmlFor="" className="fs-md-rwd position-relative">
             Nickname
             <i className="far fa-user position-absolute text-secondary"></i>
           </label>
@@ -51,7 +51,7 @@ export default function Register(props) {
             type="text"
             name="nickname"
             autoComplete="chrome-off"
-            className={`form-control ${errors.nickname && "is-invalid"}`}
+            className={`fs-md-rwd form-control ${errors.nickname && "is-invalid"}`}
             {...register("nickname", {
               required: true,
             })}
@@ -63,7 +63,7 @@ export default function Register(props) {
           )}
         </div>
         <div className="form-group position-relative">
-          <label htmlFor="" className="position-relative">
+          <label htmlFor="" className="fs-md-rwd position-relative">
             Email
             <i className="far fa-envelope position-absolute text-secondary"></i>
           </label>
@@ -72,7 +72,7 @@ export default function Register(props) {
             name="email"
             placeholder=""
             autoComplete="chrome-off"
-            className={`form-control ${errors.email && "is-invalid"}`}
+            className={`fs-md-rwd form-control ${errors.email && "is-invalid"}`}
             {...register("email", {
               required: true,
               pattern: /^\w+(\[\+\.-\]?\w)*@\w+(\[\.-\]?\w+)*\.[a-z]+$/i,
@@ -90,7 +90,7 @@ export default function Register(props) {
           )}
         </div>
         <div className="form-group position-relative">
-          <label htmlFor="" className="position-relative">
+          <label htmlFor="" className="fs-md-rwd position-relative">
             Password
             <i className="fas fa-lock position-absolute text-secondary"></i>
           </label>
@@ -100,7 +100,7 @@ export default function Register(props) {
             name="password"
             placeholder=""
             autoComplete="chrome-off"
-            className={`form-control ${errors.password && "is-invalid"}`}
+            className={`fs-md-rwd form-control ${errors.password && "is-invalid"}`}
             {...register("password", { required: true, minLength: 3 })}
           />
           {!!errors.password && errors.password.type === "required" ? (
@@ -117,10 +117,10 @@ export default function Register(props) {
           )}
         </div>
         <div className="btn-wrap d-flex justify-content-between">
-          <Link to="/login" className="btn btn-secondary">
+          <Link to="/login" className="fs-md-rwd btn btn-secondary">
             Login
           </Link>
-          <button className="btn btn-primary" type="submit">
+          <button className="fs-md-rwd btn btn-primary" type="submit">
             Register
           </button>
         </div>

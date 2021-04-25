@@ -12,13 +12,14 @@
     transition: 0.3s;
   }
   .panel {
+    overflow-y: scroll;
     position: fixed;
-    width: 380px;
+    width: 300px;
     top: 0px;
     bottom: 0px;
     right: 0px;
     z-index: 999;
-    margin-right: -380px;
+    margin-right: -300px;
     transition: 0.3s;
     .panel-head {
       .close-icon {
@@ -35,4 +36,13 @@
       margin-right: 0px;
     }
   }
+}
+
+@media screen and(min-width:768px) {
+  .panel-wrap {
+    .panel {
+    width: 380px;
+    margin-right: -380px;
+    }
+  }  
 }

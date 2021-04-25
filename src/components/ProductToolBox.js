@@ -34,20 +34,20 @@ class ProductToolBox extends React.Component {
     return (
       <div className="product-tool-box py-3 border-bottom border-primary">
         <div className="d-flex justify-content-between align-items-center">
-          <div>
-            <h3>Shop</h3>
+          <div className="d-none d-md-block">
+            <h3 className="fs-lg-rwd mb-1">Shop</h3>
           </div>
-          <div className="col-6">
+          <div className="col-10 col-md-6 pl-0 ">
             <div className="search-box form-group d-flex mb-0">
               <input
                 type="text"
-                className="form-control mr-1"
+                className="fs-md-rwd form-control mr-1"
                 placeholder="Search"
                 value={this.state.searchText}
                 onChange={this.handleChange}
               />
               <button
-                className="cancel-btn btn bg-white"
+                className="cancel-btn fs-md-rwd btn bg-white"
                 onClick={this.clearSearchText}
               >
                 <i className="fas fa-times"></i>{" "}
@@ -57,7 +57,7 @@ class ProductToolBox extends React.Component {
           <div className="cart-icon-wrap">
             <a
               href="#!"
-              className="position-relative"
+              className="fs-md-rwd position-relative"
               onClick={(e) => {
                 this.goCart(e);
               }}

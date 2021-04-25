@@ -131,7 +131,7 @@ class Products extends React.Component {
     if (user.type === 1) {
       return (
         <button
-          className="panel-add-btn btn btn-warning position-fixed text-center font-weight-bold rounded-0"
+          className="panel-add-btn fs-md-rwd btn btn-warning position-fixed text-center font-weight-bold rounded-0"
           onClick={this.openPanelAdd}
         >
           <i className="fas fa-plus"></i>
@@ -147,7 +147,6 @@ class Products extends React.Component {
           <ProductToolBox search={this.search} cartNum={this.state.cartNum} />
           <div
             className="product-list row mt-3"
-            style={{ minHeight: "calc(100vh - 293px)" }}
           >
             <TransitionGroup component={null}>
               {!!this.state.filterProducts

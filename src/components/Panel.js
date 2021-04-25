@@ -42,7 +42,7 @@ class Panel extends React.Component {
         <div className="panel bg-white">
           <div className="panel-head d-flex justify-content-end px-3 py-3">
             <span
-              className="close-icon font-weight-bold h5"
+              className="fs-md-rwd close-icon font-weight-bold h5"
               onClick={this.closePanel}
             >
               <i className="fas fa-times"></i>

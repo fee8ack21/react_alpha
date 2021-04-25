@@ -27,7 +27,7 @@ const CartItem = (props) => {
   return (
     <tr className="cart-item bg-white">
       <td className="py-3 text-center">
-        <a href="#!" onClick={deleteCart}>
+        <a href="#!" className="fs-md-rwd" onClick={deleteCart}>
           <i className="fas fa-times"></i>
         </a>
       </td>
@@ -35,22 +35,23 @@ const CartItem = (props) => {
         <img src={image} alt="" />
       </td>
       <td className="py-3">
-        <p className="h5 text-center mb-0">{name}</p>
+        <p className="fs-md-rwd h5 text-center mb-0">{name}</p>
       </td>
       <td className="text-center">
-        <p className="mb-0">{formatPrice(price)}</p>
+        <p className="fs-md-rwd mb-0">{formatPrice(price)}</p>
       </td>
       <td className="form-group py-3">
         <input
+          style={{ width: "80px" }}
           type="number"
-          className="form-control mx-auto"
+          className="fs-md-rwd form-control mx-auto"
           value={mount}
           min={1}
           onChange={handleChanger}
         />
       </td>
       <td className="py-3 text-center">
-        <p className="text-danger mb-0">{sumPrice}</p>
+        <p className="fs-md-rwd text-danger mb-0">{sumPrice}</p>
       </td>
     </tr>
   );

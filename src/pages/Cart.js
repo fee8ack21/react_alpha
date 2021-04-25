@@ -49,10 +49,10 @@ const Cart = (props) => {
       <Layout>
         <div className="cart-wrap container">
           <div className="py-3 border-bottom border-primary">
-            <h3>Cart</h3>
+            <h3 className="fs-lg-rwd mb-1">Cart</h3>
           </div>
-          <div style={{ minHeight: "calc(100vh - 309px)" }}>
-            <div className="cart-item-wrap py-3">
+          <div className="cart-item-wrap">
+            <div className="py-3">
               <div
                 style={{
                   overflowX: "scroll",
@@ -61,12 +61,22 @@ const Cart = (props) => {
                 <table style={{ minWidth: "100%" }}>
                   <thead>
                     <tr className="border-bottom border-primary">
-                      <th className="td-sm-width text-center pb-3 px-4">#</th>
-                      <th className="td-md-width text-center pb-3">Image</th>
-                      <th className="td-lg-width text-center pb-3">Name</th>
-                      <th className="td-md-width text-center pb-3">Price</th>
-                      <th className="td-md-width text-center pb-3">Amount</th>
-                      <th className="td-md-width text-center pb-3 px-5">
+                      <th className="fs-md-rwd td-sm-width text-center pb-3 px-4">
+                        #
+                      </th>
+                      <th className="fs-md-rwd td-md-width text-center pb-3">
+                        Image
+                      </th>
+                      <th className="fs-md-rwd td-lg-width text-center pb-3">
+                        Name
+                      </th>
+                      <th className="fs-md-rwd td-md-width text-center pb-3">
+                        Price
+                      </th>
+                      <th className="fs-md-rwd td-md-width text-center pb-3">
+                        Amount
+                      </th>
+                      <th className="fs-md-rwd td-md-width text-center pb-3 px-5">
                         Total
                       </th>
                     </tr>
@@ -100,7 +110,7 @@ const Cart = (props) => {
                         >
                           <td className="mb-0 font-italic" colSpan={6}>
                             <span
-                              className="position-fixed"
+                              className="fs-md-rwd position-fixed"
                               style={{
                                 top: "230px",
                                 left: "50%",
@@ -122,7 +132,7 @@ const Cart = (props) => {
           </div>
           <div className="d-flex justify-content-end">
             <div>
-              <p className="h5 font-weight-bold">
+              <p className="sum-price font-weight-bold">
                 Total：
                 <span className="text-danger font-italic">{totalPrice}</span>
               </p>

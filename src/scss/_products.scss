@@ -1,4 +1,7 @@
 .products {
+  .product-list {
+    min-height: calc(100vh - 345px);
+  }
   .product-fade-enter {
     opacity: 0;
   }
@@ -26,6 +29,14 @@
     right: 0px;
     i {
       transform: translateX(1.5px);
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .products {
+    .product-list {
+      min-height: calc(100vh - 290px);
     }
   }
 }

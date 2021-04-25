@@ -56,10 +56,10 @@ class AddInventory extends React.Component {
       <div className="add-inventory-wrap">
         <form action="" onSubmit={this.submit}>
           <div className="form-group">
-            <label htmlFor="add-name">Name：</label>
+            <label htmlFor="add-name" className="fs-md-rwd">Name：</label>
             <textarea
               id="add-name"
-              className="form-control"
+              className="fs-md-rwd form-control"
               name="name"
               cols="30"
               rows="4"
@@ -68,10 +68,10 @@ class AddInventory extends React.Component {
             ></textarea>
           </div>
           <div className="form-group">
-            <label htmlFor="add-price">Price：</label>
+            <label htmlFor="add-price" className="fs-md-rwd">Price：</label>
             <input
               id="add-price"
-              className="form-control"
+              className="fs-md-rwd form-control"
               name="price"
               type="number"
               min={1}
@@ -80,10 +80,10 @@ class AddInventory extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="add-image1">Image1：</label>
+            <label htmlFor="add-image1" className="fs-md-rwd">Image1：</label>
             <input
               id="add-image1"
-              className="form-control"
+              className="fs-md-rwd form-control"
               name="image1"
               type=""
               value={this.state.image1}
@@ -91,10 +91,10 @@ class AddInventory extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="add-image2">Image2：</label>
+            <label htmlFor="add-image2" className="fs-md-rwd">Image2：</label>
             <input
               id="add-image2"
-              className="form-control"
+              className="fs-md-rwd form-control"
               name="image2"
               type=""
               value={this.state.image2}
@@ -102,11 +102,11 @@ class AddInventory extends React.Component {
             />
           </div>
           <div className="form-group position-relative">
-            <label htmlFor="add-color">
+            <label htmlFor="add-color" className="fs-md-rwd">
               Color：
               <input type="color" onChange={this.addColor} />
               <span
-                className="position-absolute"
+                className="fs-md-rwd position-absolute"
                 style={{ right: "10px", top: "38px", cursor: "pointer" }}
                 onClick={this.clearColor}
               >
@@ -115,7 +115,7 @@ class AddInventory extends React.Component {
             </label>
             <input
               id="add-color"
-              className="form-control"
+              className="fs-md-rwd form-control"
               disabled
               name="color"
               type="text"
@@ -124,21 +124,21 @@ class AddInventory extends React.Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="add-available">Status：</label>
+            <label htmlFor="add-available" className="fs-md-rwd">Status：</label>
             <select
               id="add-available"
-              className="form-control"
+              className="fs-md-rwd form-control"
               name="status"
               value={this.state.status}
               onChange={this.handleChange}
             >
-              <option value="available">available</option>
-              <option value="outOfStock">out of stock</option>
+              <option value="available" className="fs-md-rwd">available</option>
+              <option value="outOfStock" className="fs-md-rwd">out of stock</option>
             </select>
           </div>
           <div className="btn-wrap form-group d-flex justify-content-between">
             <button
-              className="btn btn-secondary"
+              className="fs-md-rwd btn btn-secondary"
               type="button"
               onClick={() => {
                 this.props.close();
@@ -146,7 +146,7 @@ class AddInventory extends React.Component {
             >
               Cancel
             </button>
-            <button className="btn btn-primary">Submit</button>
+            <button className="fs-md-rwd btn btn-primary">Submit</button>
           </div>
         </form>
       </div>

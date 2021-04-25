@@ -1,4 +1,7 @@
 .cart-wrap {
+  .cart-item-wrap {
+    min-height: calc(100vh - 375px);
+  }
   .cart-item-fade-enter {
     opacity: 0;
   }
@@ -22,5 +25,19 @@
   }
   .td-lg-width {
     min-width: 417px;
+  }
+  .sum-price {
+    font-size: 18px;
+  }
+}
+
+@media screen and(min-width:768px) {
+  .cart-wrap {
+    .cart-item-wrap {
+      min-height: calc(100vh - 325px);
+    }
+    .sum-price {
+      font-size: 20px;
+    }
   }
 }

@@ -23,7 +23,7 @@ class Header extends React.Component {
     if (JSON.stringify(user) !== "{}") {
       return (
         <span
-          className="text-white"
+          className="fs-md-rwd text-white"
           style={{ cursor: "pointer" }}
           onClick={() => {
             this.toProfile();
@@ -36,10 +36,10 @@ class Header extends React.Component {
     } else {
       return (
         <>
-          <Link to="/login" className="text-decoration-none text-white mr-4">
+          <Link to="/login" className="fs-md-rwd text-decoration-none text-white mr-4">
             Login
           </Link>
-          <Link to="/register" className="text-decoration-none text-white">
+          <Link to="/register" className="fs-md-rwd text-decoration-none text-white">
             Register
           </Link>
         </>
@@ -52,7 +52,7 @@ class Header extends React.Component {
         <div className="container">
           <div className="d-flex">
             <div>
-              <Link to="/" className="text-decoration-none text-white">
+              <Link to="/" className="fs-md-rwd text-decoration-none text-white">
                 Home
               </Link>
             </div>

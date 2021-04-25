@@ -77,7 +77,7 @@ class Product extends React.Component {
     if (user.type === 1) {
       return (
         <button
-          className="edit-btn btn btn-light d-flex justify-content-center align-items-center position-absolute rounded-circle"
+          className="edit-btn fs-md-rwd btn btn-light d-flex justify-content-center align-items-center position-absolute rounded-circle"
           onClick={this.toEdit}
         >
           <i className="fas fa-list"></i>
@@ -106,7 +106,7 @@ class Product extends React.Component {
                 ""
               ) : (
                 <div className="no-stock-layer position-absolute d-flex justify-content-center align-items-center">
-                  <span className="text-danger font-weight-bold font-italic">
+                  <span className="fs-lg-rwd text-danger font-weight-bold font-italic">
                     OuT oF sToCk
                   </span>
                 </div>
@@ -122,18 +122,18 @@ class Product extends React.Component {
             {this.renderManagerBtn()}
           </div>
           <div className="product-info">
-            <small className="text-secondary font-italic">
+            <p className="fs-sm-rwd  text-center text-md-left text-secondary font-italic mb-0">
               {color.length + " Colors"}
-            </small>
-            <p>{name}</p>
+            </p>
+            <p className="fs-md-rwd text-center text-md-left">{name}</p>
           </div>
-          <div>
-            <small className="text-secondary font-italic">{time}</small>
+          <div className="d-none d-md-block">
+            <p className="fs-sm-rwd text-center text-md-left text-secondary font-italic mb-0">{time}</p>
           </div>
-          <div className="d-flex justify-content-between align-items-center">
-            <p className="mb-0">{formatPrice(price)}</p>
+          <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <p className="fs-md-rwd mb-2 mb-md-0">{formatPrice(price)}</p>
             <button
-              className={`add-to-cart-btn btn d-flex justify-content-center align-items-center bg-info rounded-circle ${
+              className={`add-to-cart-btn fs-md-rwd btn d-flex justify-content-center align-items-center bg-info rounded-circle ${
                 status === "available" ? "" : "disabled"
               }`}
               disabled={status === "available" ? "" : "disabled"}
