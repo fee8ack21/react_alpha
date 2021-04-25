@@ -4,7 +4,8 @@ import App from "./App";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "common/auth";
-// export default Login
+import MessengerCustomerChat from "react-messenger-customer-chat";
+//
 ReactDOM.render(
   <>
     <ToastContainer
@@ -19,6 +20,11 @@ ReactDOM.render(
       pauseOnHover
     />
     <App />
+    <MessengerCustomerChat
+      pageId="104903445063158"
+      appId="366104244735566"
+      htmlRef={window.location.pathname}
+    />
   </>,
   document.getElementById("root")
 );
