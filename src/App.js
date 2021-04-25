@@ -11,7 +11,7 @@ class App extends React.Component {
         <MessengerCustomerChat
           pageId="104903445063158"
           appId="366104244735566"
-          htmlRef={window.location.pathname}
+          // htmlRef={window.location.pathname}
         />
       </>
     );
