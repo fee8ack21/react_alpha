@@ -106,13 +106,13 @@ const Cart = (props) => {
                       >
                         <tr
                           className="text-center text-secondary bg-white font-weight-bold"
-                          style={{ height: "153px" }}
+                          style={{ height: "93px" }}
                         >
                           <td className="mb-0 font-italic" colSpan={6}>
                             <span
                               className="fs-md-rwd position-fixed"
                               style={{
-                                top: "230px",
+                                top: "196px",
                                 left: "50%",
                                 transform: "translate(-50%)",
                               }}

@@ -42,7 +42,6 @@ class Product extends React.Component {
       const { id, name, image1, price } = this.props.product;
       const res = await axios.get(`/carts?productId=${id}`);
       const carts = res.data;
-      console.log(carts);
       if (carts && carts.length > 0) {
         if (carts[0].userId === user.email) {
           const cart = carts[0];

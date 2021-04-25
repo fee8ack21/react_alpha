@@ -12,10 +12,16 @@ class AddInventory extends React.Component {
     time: "",
   };
   //
-  showToast = () => {
-    toast("Your submission has been saved!", {
-      autoClose: true,
-    });
+  showToast = (p) => {
+    if (p === "ok") {
+      toast("Your submission has been saved!", {
+        autoClose: true,
+      });
+    } else if (p === "no") {
+      toast("Oops! Something's wrong!", {
+        autoClose: true,
+      });
+    }
   };
   //
   handleChange = (e) => {
@@ -41,16 +47,44 @@ class AddInventory extends React.Component {
       }-${new Date().getDate()}`,
     });
     const product = { ...this.state };
+    //
+    for (let item in product) {
+      if (item !== "color") {
+        if (product[item].includes("<") || product[item].includes(">")) {
+          this.showToast("no");
+          this.props.close();
+          return;
+        }
+      } else if (item === "color") {
+        console.log(123);
+        if (product["color"].length === 0) {
+          this.showToast("no");
+          this.props.close();
+          return;
+        }
+        //
+        for (let i = 0; i < product["color"].length; i++) {
+          if (
+            product["color"][i].includes("<") ||
+            product["color"][i].includes(">")
+          ) {
+            this.showToast("no");
+            this.props.close();
+            return;
+          }
+        }
+      }
+    }
+    //
     axios.post("products", product).then((res) => {
       this.props.close(res.data);
-      this.showToast();
+      this.showToast("ok");
     });
   };
   //
   addColor = (e) => {
     const newColorArr = [...this.state.color];
     newColorArr.push(e.target.value);
-    console.log(newColorArr);
     this.setState({ color: newColorArr });
   };
   //
@@ -72,6 +106,8 @@ class AddInventory extends React.Component {
               name="name"
               cols="30"
               rows="4"
+              pattern="^[a-zA-Z0-9_.-\/^\s*$]*$"
+              required="required"
               value={this.state.name}
               onChange={this.handleChange}
             ></textarea>
@@ -85,6 +121,7 @@ class AddInventory extends React.Component {
               className="fs-md-rwd form-control"
               name="price"
               type="number"
+              required="required"
               min={1}
               value={this.state.price}
               onChange={this.handleChange}
@@ -99,6 +136,7 @@ class AddInventory extends React.Component {
               className="fs-md-rwd form-control"
               name="image1"
               type=""
+              required="required"
               value={this.state.image1}
               onChange={this.handleChange}
             />
@@ -112,6 +150,7 @@ class AddInventory extends React.Component {
               className="fs-md-rwd form-control"
               name="image2"
               type=""
+              required="required"
               value={this.state.image2}
               onChange={this.handleChange}
             />
@@ -119,7 +158,11 @@ class AddInventory extends React.Component {
           <div className="form-group position-relative">
             <label htmlFor="add-color" className="fs-md-rwd">
               Color：
-              <input type="color" onChange={this.addColor} />
+              <input
+                type="color"
+                required="required"
+                onChange={this.addColor}
+              />
               <span
                 className="fs-md-rwd position-absolute"
                 style={{ right: "10px", top: "38px", cursor: "pointer" }}
@@ -133,6 +176,7 @@ class AddInventory extends React.Component {
               className="fs-md-rwd form-control"
               readOnly="readonly"
               name="color"
+              required="required"
               type="text"
               value={this.state.color}
               onChange={this.handleChange}
@@ -150,10 +194,10 @@ class AddInventory extends React.Component {
               onChange={this.handleChange}
             >
               <option value="available" className="fs-md-rwd">
-                available
+                Available
               </option>
               <option value="outOfStock" className="fs-md-rwd">
-                out of stock
+                Out of Stock
               </option>
             </select>
           </div>

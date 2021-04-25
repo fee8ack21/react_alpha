@@ -10,7 +10,11 @@ const CartItem = (props) => {
   ]);
   //
   const handleChanger = (e) => {
-    const _mount = parseInt(e.target.value);
+    let _mount = e.target.value;
+    if (_mount === "0" || _mount === "") {
+      _mount = 1;
+    }
+    _mount = parseInt(_mount);
     setMount(_mount);
     const newCart = { ...props.cart, mount: _mount };
     axios.put(`/carts/${id}`, newCart).then((res) => {

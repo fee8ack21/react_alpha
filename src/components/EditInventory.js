@@ -6,7 +6,7 @@ class EditInventory extends React.Component {
     id: "",
     name: "",
     price: "",
-    color: "",
+    color: [],
     image1: "",
     image2: "",
     status: "available",
@@ -38,10 +38,16 @@ class EditInventory extends React.Component {
     });
   }
   //
-  showToast = () => {
-    toast("Your submission has been saved!", {
-      autoClose: true,
-    });
+  showToast = (p) => {
+    if (p === "ok") {
+      toast("Your submission has been saved!", {
+        autoClose: true,
+      });
+    } else if (p === "no") {
+      toast("Oops! Something's wrong!", {
+        autoClose: true,
+      });
+    }
   };
   //
   handleChange = (e) => {
@@ -62,9 +68,38 @@ class EditInventory extends React.Component {
   submit = (e) => {
     e.preventDefault();
     const product = { ...this.state };
+    //
+    for (let item in product) {
+      if (item !== "color") {
+        if (product[item].includes("<") || product[item].includes(">")) {
+          this.showToast("no");
+          this.props.close();
+          return;
+        }
+      } else if (item === "color") {
+        console.log(123);
+        if (product["color"].length === 0) {
+          this.showToast("no");
+          this.props.close();
+          return;
+        }
+        //
+        for (let i = 0; i < product["color"].length; i++) {
+          if (
+            product["color"][i].includes("<") ||
+            product["color"][i].includes(">")
+          ) {
+            this.showToast("no");
+            this.props.close();
+            return;
+          }
+        }
+      }
+    }
+    //
     axios.put(`products/${this.state.id}`, product).then((res) => {
       this.props.close(res.data);
-      this.showToast();
+      this.showToast("ok");
     });
   };
   //
@@ -184,10 +219,10 @@ class EditInventory extends React.Component {
               onChange={this.handleChange}
             >
               <option value="available" className="fs-md-rwd">
-                available
+                Available
               </option>
               <option value="outOfStock" className="fs-md-rwd">
-                out of stock
+                Out of Stock
               </option>
             </select>
           </div>
