@@ -1,7 +1,9 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import ProductToolBox from "components/ProductToolBox";
 import Product from "components/Product";
 import axios from "common/axios";
+import { toast } from "react-toastify";
 import Panel from "components/Panel";
 import Spinner from "components/Spinner";
 import AddInventory from "components/AddInventory";
@@ -59,6 +61,12 @@ class Products extends React.Component {
   };
   //
   openPanelAdd = () => {
+    if (!global.auth.isLogin()) {
+      this.props.history.push("/login");
+      toast("Please login to continue!");
+      return;
+    }
+    //
     Panel.openPanel({
       component: AddInventory,
       callback: (data) => {
@@ -145,9 +153,7 @@ class Products extends React.Component {
         {!this.state.loadingState && <Spinner />}
         <div className="products container">
           <ProductToolBox search={this.search} cartNum={this.state.cartNum} />
-          <div
-            className="product-list row mt-3"
-          >
+          <div className="product-list row mt-3">
             <TransitionGroup component={null}>
               {!!this.state.filterProducts
                 ? this.state.filterProducts.map((item) => {
@@ -176,4 +182,4 @@ class Products extends React.Component {
     );
   }
 }
-export default Products;
+export default withRouter(Products);

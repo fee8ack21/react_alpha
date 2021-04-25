@@ -11,7 +11,7 @@ const getToken = (token) => {
 //
 const isLogin = () => {
   const jwToken = getToken();
-  return !!jwToken && !isTokenExpired();
+  return !!jwToken && !isTokenExpired(jwToken);
 };
 //
 const getUser = () => {
@@ -28,6 +28,8 @@ const isTokenExpired = (token) => {
   try {
     const _info = decode(token);
     if (_info.exp < Date.now() / 1000) {
+      console.log(123)
+      localStorage.removeItem(JWT);
       return true;
     } else return false;
   } catch (error) {

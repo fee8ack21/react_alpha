@@ -21,9 +21,16 @@ class AddInventory extends React.Component {
   handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
-    this.setState({
-      [name]: value,
-    });
+    if (name === "price") {
+      const adjustVal = value === "0" || value === "" ? "1" : value;
+      this.setState({
+        [name]: adjustVal,
+      });
+    } else {
+      this.setState({
+        [name]: value,
+      });
+    }
   };
   //
   submit = async (e) => {
@@ -124,7 +131,7 @@ class AddInventory extends React.Component {
             <input
               id="add-color"
               className="fs-md-rwd form-control"
-              readonly="readonly"
+              readOnly="readonly"
               name="color"
               type="text"
               value={this.state.color}

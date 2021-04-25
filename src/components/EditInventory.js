@@ -47,9 +47,16 @@ class EditInventory extends React.Component {
   handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
-    this.setState({
-      [name]: value,
-    });
+    if (name === "price") {
+      const adjustVal = value === "0" || value === "" ? "1" : value;
+      this.setState({
+        [name]: adjustVal,
+      });
+    } else {
+      this.setState({
+        [name]: value,
+      });
+    }
   };
   //
   submit = (e) => {

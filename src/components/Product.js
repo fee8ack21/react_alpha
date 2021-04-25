@@ -10,6 +10,12 @@ class Product extends React.Component {
     imgState: false,
   };
   toEdit = () => {
+    if (!global.auth.isLogin()) {
+      this.props.history.push("/login");
+      toast("Please login to continue!");
+      return;
+    }
+    //
     Panel.openPanel({
       component: EditInventory,
       props: {
@@ -128,7 +134,9 @@ class Product extends React.Component {
             <p className="fs-md-rwd text-center text-md-left">{name}</p>
           </div>
           <div className="d-none d-md-block">
-            <p className="fs-sm-rwd text-center text-md-left text-secondary font-italic mb-0">{time}</p>
+            <p className="fs-sm-rwd text-center text-md-left text-secondary font-italic mb-0">
+              {time}
+            </p>
           </div>
           <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
             <p className="fs-md-rwd mb-2 mb-md-0">{formatPrice(price)}</p>
