@@ -55,79 +55,68 @@ const Cart = (props) => {
           <div className="cart-item-wrap">
             <div className="py-3">
               <div
+                className="position-relative"
                 style={{
                   overflowX: "scroll",
                 }}
               >
-                <table style={{ minWidth: "100%" }}>
-                  <thead>
-                    <tr className="border-bottom border-primary">
-                      <th className="fs-md-rwd td-sm-width text-center pb-3 px-4">
-                        #
-                      </th>
-                      <th className="fs-md-rwd td-md-width text-center pb-3">
-                        Image
-                      </th>
-                      <th className="fs-md-rwd td-lg-width text-center pb-3">
-                        Name
-                      </th>
-                      <th className="fs-md-rwd td-md-width text-center pb-3">
-                        Price
-                      </th>
-                      <th className="fs-md-rwd td-md-width text-center pb-3">
-                        Amount
-                      </th>
-                      <th className="fs-md-rwd td-md-width text-center pb-3 px-5">
-                        Total
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <TransitionGroup component={null}>
-                      {carts.map((cart) => (
-                        <CSSTransition
-                          classNames="cart-item-fade"
-                          timeout={{ enter: 200, exit: 200 }}
-                          key={cart.id}
-                        >
-                          <CartItem
+                {carts.length > 0 && (
+                  <table style={{ minWidth: "100%" }}>
+                    <thead>
+                      <tr className="border-bottom border-primary">
+                        <th className="fs-md-rwd td-sm-width text-center pb-3 px-4">
+                          #
+                        </th>
+                        <th className="fs-md-rwd td-md-width text-center pb-3">
+                          Image
+                        </th>
+                        <th className="fs-md-rwd td-lg-width text-center pb-3">
+                          Name
+                        </th>
+                        <th className="fs-md-rwd td-md-width text-center pb-3">
+                          Price
+                        </th>
+                        <th className="fs-md-rwd td-md-width text-center pb-3">
+                          Amount
+                        </th>
+                        <th className="fs-md-rwd td-md-width text-center pb-3 px-5">
+                          Total
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <TransitionGroup component={null}>
+                        {carts.map((cart) => (
+                          <CSSTransition
+                            classNames="cart-item-fade"
+                            timeout={{ enter: 200, exit: 200 }}
                             key={cart.id}
-                            cart={cart}
-                            updateCart={updateCart}
-                            deleteCart={deleteCart}
-                          />
-                        </CSSTransition>
-                      ))}
-                    </TransitionGroup>
-                    {/*  */}
-                    {carts.length === 0 ? (
-                      <CSSTransition
-                        classNames="cart-item-fade"
-                        timeout={{ enter: 200, exit: 200 }}
-                      >
-                        <tr
-                          className="text-center text-secondary bg-white font-weight-bold"
-                          style={{ height: "93px" }}
-                        >
-                          <td className="mb-0 font-italic" colSpan={6}>
-                            <span
-                              className="fs-md-rwd position-fixed"
-                              style={{
-                                top: "196px",
-                                left: "50%",
-                                transform: "translate(-50%)",
-                              }}
-                            >
-                              No Goods
-                            </span>
-                          </td>
-                        </tr>
-                      </CSSTransition>
-                    ) : (
-                      <></>
-                    )}
-                  </tbody>
-                </table>
+                          >
+                            <CartItem
+                              key={cart.id}
+                              cart={cart}
+                              updateCart={updateCart}
+                              deleteCart={deleteCart}
+                            />
+                          </CSSTransition>
+                        ))}
+                      </TransitionGroup>
+                    </tbody>
+                  </table>
+                )}
+                {carts.length === 0 && (
+                  <CSSTransition
+                    classNames="cart-item-fade"
+                    timeout={{ enter: 200, exit: 200 }}
+                  >
+                    <p
+                      className="d-flex justify-content-center align-items-center fs-md-rwd text-center text-secondary font-weight-bold font-italic mb-0"
+                      style={{ height: "134px" }}
+                    >
+                      Your cart is empty!
+                    </p>
+                  </CSSTransition>
+                )}
               </div>
             </div>
           </div>
