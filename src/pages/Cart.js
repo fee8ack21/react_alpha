@@ -5,6 +5,7 @@ import axios from "common/axios";
 import { formatPrice } from "common/helper";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Spinner from "components/Spinner";
+import { withRouter } from "react-router-dom";
 
 const Cart = (props) => {
   if (!global.auth.isLogin()) {
@@ -134,4 +135,4 @@ const Cart = (props) => {
   );
 };
 
-export default Cart;
+export default withRouter(Cart);
