@@ -9,7 +9,7 @@ import { withRouter } from "react-router-dom";
 
 const Cart = (props) => {
   if (!global.auth.isLogin()) {
-    props.history.push("/login");
+    props.history.push("/");
   }
   const [carts, setCarts] = useState([]);
   const [loadingState, setLoadingState] = useState(false);
