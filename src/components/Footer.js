@@ -1,20 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, useHistory } from "react-router-dom";
+import React from "react";
 
 function Footer(props) {
-  const [ifShow, setIfShow] = useState(false);
-  const history = useHistory();
-  //
-  const whetherShow = () => {
-    if (window.location.pathname === "/" || window.location.pathname === "/cart") {
-      setIfShow(true);
-    } else {
-      setIfShow(false);
-    }
-  };
-  useEffect(() => {
-    whetherShow();
-  }, []);
+  const ifShow = props.footerState;
 
   return (
     <footer className={`main-footer container ${ifShow ? "" : "d-none"}`}>

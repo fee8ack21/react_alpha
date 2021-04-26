@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import axios from "common/axios";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 // 類別寫法
-export default function Login(props) {
+function Login(props) {
+  useEffect(() => {
+    props.setFooterState(false);
+  });
   //
   if (global.auth.isLogin()) {
     props.history.push("/");
@@ -75,7 +78,9 @@ export default function Login(props) {
             name="password"
             placeholder=""
             autoComplete="chrome-off"
-            className={`fs-md-rwd form-control ${errors.password && "is-invalid"}`}
+            className={`fs-md-rwd form-control ${
+              errors.password && "is-invalid"
+            }`}
             {...register("password", { required: true, minLength: 3 })}
           />
           {!!errors.password && errors.password.type === "required" ? (
@@ -106,3 +111,5 @@ export default function Login(props) {
     </div>
   );
 }
+
+export default withRouter(Login);

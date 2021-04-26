@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "Layout";
 import Products from "components/Products";
 // 函式寫法
-function Home() {
+function Home(props) {
+  useEffect(() => {
+    props.setFooterState(true);
+  });
   return (
     <>
       <Layout>

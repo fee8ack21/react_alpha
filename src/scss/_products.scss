@@ -1,6 +1,6 @@
 .products {
   .product-list {
-    // min-height: calc(100vh - 345px);
+    min-height: calc(100vh - 345px);
   }
   .product-fade-enter {
     opacity: 0;
@@ -36,7 +36,7 @@
 @media screen and (min-width: 768px) {
   .products {
     .product-list {
-      // min-height: calc(100vh - 290px);
+      min-height: calc(100vh - 290px);
     }
   }
 }

@@ -14,6 +14,7 @@ const Cart = (props) => {
   const [loadingState, setLoadingState] = useState(false);
   //
   useEffect(() => {
+    props.setFooterState(true);
     const user = global.auth.getUser() || {};
 
     axios

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import axios from "common/axios";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { toast } from "react-toastify";
-export default function Register(props) {
+function Register(props) {
   //
+  useEffect(() => {
+    props.setFooterState(false);
+  });
   if (global.auth.isLogin()) {
     props.history.push("/");
   }
@@ -51,7 +54,9 @@ export default function Register(props) {
             type="text"
             name="nickname"
             autoComplete="chrome-off"
-            className={`fs-md-rwd form-control ${errors.nickname && "is-invalid"}`}
+            className={`fs-md-rwd form-control ${
+              errors.nickname && "is-invalid"
+            }`}
             {...register("nickname", {
               required: true,
             })}
@@ -100,7 +105,9 @@ export default function Register(props) {
             name="password"
             placeholder=""
             autoComplete="chrome-off"
-            className={`fs-md-rwd form-control ${errors.password && "is-invalid"}`}
+            className={`fs-md-rwd form-control ${
+              errors.password && "is-invalid"
+            }`}
             {...register("password", { required: true, minLength: 3 })}
           />
           {!!errors.password && errors.password.type === "required" ? (
@@ -131,3 +138,5 @@ export default function Register(props) {
     </div>
   );
 }
+
+export default withRouter(Register);

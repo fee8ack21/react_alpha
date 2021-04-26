@@ -1,6 +1,6 @@
 .cart-wrap {
   .cart-item-wrap {
-    // min-height: calc(100vh - 375px);
+    min-height: calc(100vh - 375px);
   }
   .cart-item-fade-enter {
     opacity: 0;
@@ -34,7 +34,7 @@
 @media screen and(min-width:768px) {
   .cart-wrap {
     .cart-item-wrap {
-      // min-height: calc(100vh - 325px);
+      min-height: calc(100vh - 325px);
     }
     .sum-price {
       font-size: 20px;

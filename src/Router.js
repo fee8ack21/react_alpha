@@ -11,13 +11,26 @@ import Register from "pages/Register";
 import Cart from "pages/Cart";
 import NotFound from "pages/NotFound";
 //
-const Router = () => (
+const Router = (props) => (
   <BrowserRouter>
     <Switch>
-      <Route path="/" exact component={Home}></Route>
-      <Route path="/login" component={Login}></Route>
-      <Route path="/register" component={Register}></Route>
-      <Route path="/cart" component={Cart}></Route>
+      <Route
+        path="/"
+        exact
+        component={() => <Home setFooterState={props.setFooterState} />}
+      ></Route>
+      <Route
+        path="/login"
+        component={() => <Login setFooterState={props.setFooterState} />}
+      ></Route>
+      <Route
+        path="/register"
+        component={() => <Register setFooterState={props.setFooterState} />}
+      ></Route>
+      <Route
+        path="/cart"
+        component={() => <Cart setFooterState={props.setFooterState} />}
+      ></Route>
       <Route
         path="/ig_url"
         component={() => {
@@ -40,7 +53,9 @@ const Router = () => (
           return null;
         }}
       ></Route>
-      <Route component={NotFound}></Route>
+      <Route
+        component={() => <NotFound setFooterState={props.setFooterState} />}
+      ></Route>
     </Switch>
   </BrowserRouter>
 );
