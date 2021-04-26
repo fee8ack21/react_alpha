@@ -38,6 +38,7 @@ class AddInventory extends React.Component {
       });
     }
   };
+
   //
   submit = async (e) => {
     e.preventDefault();
@@ -46,6 +47,17 @@ class AddInventory extends React.Component {
         new Date().getMonth() + 1
       }-${new Date().getDate()}`,
     });
+    //
+    this.setState({
+      name: this.state.name.trim(),
+      price: this.state.price.trim(),
+      image1: this.state.image1.trim(),
+      image2: this.state.image2.trim(),
+      color: this.state.color.map((item) => {
+        return item.trim();
+      }),
+    });
+    //
     const product = { ...this.state };
     //
     for (let item in product) {
@@ -56,7 +68,6 @@ class AddInventory extends React.Component {
           return;
         }
       } else if (item === "color") {
-        console.log(123);
         if (product["color"].length === 0) {
           this.showToast("no");
           this.props.close();
@@ -168,7 +179,7 @@ class AddInventory extends React.Component {
                 style={{ right: "10px", top: "38px", cursor: "pointer" }}
                 onClick={this.clearColor}
               >
-                <i class="fas fa-times"></i>
+                <i className="fas fa-times"></i>
               </span>
             </label>
             <input

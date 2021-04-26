@@ -17,7 +17,7 @@ export default function UserProfile(props) {
             type="text"
             className="fs-md-rwd form-control"
             defaultValue={props.user.nickname}
-            readonly="readonly"
+            readOnly="readonly"
           />
         </div>
         <div className="form-group">
@@ -28,7 +28,7 @@ export default function UserProfile(props) {
             type="text"
             className="fs-md-rwd form-control"
             defaultValue={props.user.email}
-            readonly="readonly"
+            readOnly="readonly"
           />
         </div>
         <div className="form-group">
@@ -39,7 +39,7 @@ export default function UserProfile(props) {
             type="text"
             className="fs-md-rwd form-control"
             defaultValue={props.user.type === 1 ? "Manager" : "General User"}
-            readonly="readonly"
+            readOnly="readonly"
           />
         </div>
         <div className="btn-wrap form-group d-flex justify-content-between">

@@ -67,6 +67,17 @@ class EditInventory extends React.Component {
   //
   submit = (e) => {
     e.preventDefault();
+    //
+    this.setState({
+      name: this.state.name.trim(),
+      price: this.state.price.trim(),
+      image1: this.state.image1.trim(),
+      image2: this.state.image2.trim(),
+      color: this.state.color.map((item) => {
+        return item.trim();
+      }),
+    });
+    //
     const product = { ...this.state };
     //
     for (let item in product) {
@@ -77,7 +88,6 @@ class EditInventory extends React.Component {
           return;
         }
       } else if (item === "color") {
-        console.log(123);
         if (product["color"].length === 0) {
           this.showToast("no");
           this.props.close();
@@ -194,7 +204,7 @@ class EditInventory extends React.Component {
                 style={{ right: "10px", top: "38px", cursor: "pointer" }}
                 onClick={this.clearColor}
               >
-                <i class="fas fa-times"></i>
+                <i className="fas fa-times"></i>
               </span>
             </label>
             <input

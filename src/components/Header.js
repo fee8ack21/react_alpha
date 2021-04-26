@@ -14,7 +14,7 @@ class Header extends React.Component {
         user: this.props.user,
       },
       callback: (data) => {
-        console.log(data);
+        // console.log(data);
         if (data === "logout") {
           this.props.history.go(0);
         }
