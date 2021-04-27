@@ -1,3 +1,5 @@
-- 未做圖片上傳功能
-- 商品ID 不是連續數字
-- Footer 元件未完成
+# React Alpha
+
+---
+
+- https://react-udemy-alpha.herokuapp.com/
