@@ -1,12 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
 import axios from "common/axios";
 import { Link, withRouter } from "react-router-dom";
 import { toast } from "react-toastify";
+import { FooterContext } from "../index.js";
+
 function Register(props) {
+  const context = useContext(FooterContext);
   //
   useEffect(() => {
-    props.setFooterState(false);
+    context.setFooterState(false);
   });
   if (global.auth.isLogin()) {
     props.history.push("/");

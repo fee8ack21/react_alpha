@@ -1,10 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import Layout from "Layout";
 import Products from "components/Products";
+import { FooterContext } from "../index.js";
+
 // 函式寫法
-function Home(props) {
+function Home() {
+  const context = useContext(FooterContext);
+
   useEffect(() => {
-    props.setFooterState(true);
+    context.setFooterState(true);
   });
   return (
     <>

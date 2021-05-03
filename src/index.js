@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "common/auth";
 import Footer from "components/Footer";
 //
-
+export const FooterContext = React.createContext();
 function Index() {
   const [footerState, setFooterState] = useState(false);
   return (
@@ -22,8 +22,10 @@ function Index() {
         draggable
         pauseOnHover
       />
-      <App setFooterState={setFooterState} />
-      <Footer footerState={footerState} />
+      <FooterContext.Provider value={{ footerState, setFooterState }}>
+        <App setFooterState={setFooterState} />
+        <Footer footerState={footerState} />
+      </FooterContext.Provider>
     </>
   );
 }

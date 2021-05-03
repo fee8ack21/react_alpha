@@ -1,12 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
 import axios from "common/axios";
 import { toast } from "react-toastify";
 import { Link, withRouter } from "react-router-dom";
+import { FooterContext } from "../index.js";
+
 // 類別寫法
 function Login(props) {
+  const context = useContext(FooterContext);
+
   useEffect(() => {
-    props.setFooterState(false);
+    context.setFooterState(false);
   });
   //
   if (global.auth.isLogin()) {

@@ -1,8 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import Layout from "Layout";
-const NotFound = (props) => {
+import { FooterContext } from "../index.js";
+const NotFound = () => {
+  const context = useContext(FooterContext);
+
   useEffect(() => {
-    props.setFooterState(true);
+    context.setFooterState(true);
   });
   return (
     <>
