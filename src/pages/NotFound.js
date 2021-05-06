@@ -1,12 +1,6 @@
-import React, { useEffect, useContext } from "react";
+import React from "react";
 import Layout from "Layout";
-import { FooterContext } from "../index.js";
 const NotFound = () => {
-  const context = useContext(FooterContext);
-
-  useEffect(() => {
-    context.setFooterState(true);
-  });
   return (
     <>
       <Layout>

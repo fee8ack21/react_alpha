@@ -1,10 +1,12 @@
-import React from "react";
+import { FooterContext } from "index";
+import React, { useContext } from "react";
 
-function Footer(props) {
-  const ifShow = props.footerState;
-
+function Footer() {
+  const context = useContext(FooterContext);
   return (
-    <footer className={`main-footer container ${ifShow ? "" : "d-none"}`}>
+    <footer
+      className={`main-footer container ${context.footerState ? "" : "d-none"}`}
+    >
       <div className="d-flex flex-column flex-md-row justify-content-center align-items-center border-top border-primary py-3">
         <div className="fb-fanspage-wrap d-flex">
           <div

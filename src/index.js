@@ -23,7 +23,7 @@ function Index() {
         pauseOnHover
       />
       <FooterContext.Provider value={{ footerState, setFooterState }}>
-        <App setFooterState={setFooterState} />
+        <App />
         <Footer footerState={footerState} />
       </FooterContext.Provider>
     </>

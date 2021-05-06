@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo,useContext } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Layout from "Layout";
 import CartItem from "components/CartItem";
 import axios from "common/axios";
@@ -6,9 +6,7 @@ import { formatPrice } from "common/helper";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Spinner from "components/Spinner";
 import { withRouter } from "react-router-dom";
-import { FooterContext } from "../index.js";
 const Cart = (props) => {
-  const context = useContext(FooterContext);
   if (!global.auth.isLogin()) {
     props.history.push("/");
   }
@@ -16,7 +14,6 @@ const Cart = (props) => {
   const [loadingState, setLoadingState] = useState(false);
   //
   useEffect(() => {
-    context.setFooterState(true)
     const user = global.auth.getUser() || {};
 
     axios
